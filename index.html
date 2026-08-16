@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<title>מסלול לפרישה — מחשבון הון וקצבה</title>
+<style>
+:root{--navy:#102a43;--navy2:#173d66;--blue:#2563eb;--teal:#0f9f8f;--green:#16865c;--bg:#f4f7fb;--card:#fff;--text:#172b4d;--muted:#65748b;--line:#dfe7f1;--warn:#b45309;--red:#c2414b;--shadow:0 12px 35px rgba(16,42,67,.09)}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Hebrew",sans-serif;background:var(--bg);color:var(--text);line-height:1.45}button,input,select,textarea{font:inherit}.wrap{max-width:1280px;margin:auto;padding:0 22px}
+.hero{background:linear-gradient(125deg,#0d2238,#153d68 65%,#0d6a69);color:#fff;padding:45px 0 82px}.brand{display:flex;align-items:center;gap:11px;font-weight:800}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#6ee7d8,#38bdf8);display:grid;place-items:center;color:#0d2941;font-size:20px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:35px;align-items:center;margin-top:32px}.hero h1{font-size:clamp(34px,5vw,55px);line-height:1.06;margin:0 0 15px}.hero p{font-size:18px;color:#dce8f5;max-width:700px;margin:0}.hero-note{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);padding:21px;border-radius:20px}.hero-note strong{display:block;font-size:25px;margin-bottom:7px}
+.shell{margin-top:-45px;position:relative;padding-bottom:45px}.layout{display:grid;grid-template-columns:430px 1fr;gap:20px;align-items:start}.panel,.results{background:var(--card);border-radius:20px;box-shadow:var(--shadow);border:1px solid #eef2f7}.panel{padding:17px;position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}.results{padding:22px}
+.tabs{display:flex;gap:6px;background:#eef3f8;padding:5px;border-radius:13px;margin-bottom:16px;overflow:auto}.tab{flex:1;min-width:58px;border:0;background:transparent;padding:9px 4px;border-radius:9px;color:var(--muted);cursor:pointer;font-weight:700;font-size:12.5px;white-space:nowrap}.tab.active{background:#fff;color:var(--navy);box-shadow:0 2px 8px rgba(16,42,67,.09)}
+.section{display:none}.section.active{display:block}.section h3{font-size:17px;margin:4px 0 13px}.field{margin-bottom:11px}.field label{display:flex;justify-content:flex-start;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#42526a;margin-bottom:5px}.field small{font-weight:400;color:var(--muted)}.input-wrap{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden}.input-wrap input,.input-wrap select{width:100%;border:0;outline:0;padding:9px 10px;color:var(--text);background:#fff}.suffix{padding:0 9px;color:var(--muted);font-size:12px;white-space:nowrap}.subhead{display:flex;align-items:center;gap:8px;border-top:1px solid var(--line);padding-top:14px;margin:16px 0 11px;font-weight:800}.dot{width:9px;height:9px;border-radius:50%;background:var(--teal)}
+.actions{display:flex;gap:8px;position:sticky;bottom:-17px;background:#fff;padding:13px 0 2px}.btn{border:0;border-radius:11px;padding:11px 14px;cursor:pointer;font-weight:800}.primary{background:var(--blue);color:#fff;flex:1}.secondary{background:#eef3f8;color:var(--navy)}.danger{background:#fdeceb;color:var(--red)}.btn.small{padding:7px 10px;font-size:12px;border-radius:9px}
+.asset-table{width:100%;border-collapse:collapse;font-size:12px}.asset-table th{color:var(--muted);text-align:right;padding:7px 4px;border-bottom:1px solid var(--line)}.asset-table td{padding:5px 3px}.asset-table input{width:100%;min-width:56px;border:1px solid var(--line);border-radius:8px;padding:7px}.asset-table .asset-name{min-width:105px}.asset-total{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.mini{background:#f4f8fc;border:1px solid var(--line);border-radius:11px;padding:9px}.mini span{font-size:11px;color:var(--muted);display:block}.mini strong{font-size:17px}
+.headline{display:flex;justify-content:space-between;gap:18px;margin-bottom:18px}.headline h2{margin:0;font-size:24px}.headline p{margin:4px 0 0;color:var(--muted)}.status{padding:8px 11px;border-radius:999px;background:#e8f7f2;color:#087c6d;font-weight:800;font-size:13px;white-space:nowrap;height:max-content}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.kpi{border:1px solid var(--line);border-radius:16px;padding:14px;background:linear-gradient(180deg,#fff,#fbfdff)}.kpi.feature{background:linear-gradient(135deg,#102a43,#184b7d);color:#fff;border:0}.kpi .label{font-size:12px;color:var(--muted);min-height:34px;display:flex;align-items:flex-start;gap:5px}.kpi.feature .label,.kpi.feature .sub{color:#dce8f5}.kpi .value{font-size:23px;font-weight:900;margin-top:3px;letter-spacing:-.4px}.kpi .sub{font-size:11px;color:var(--muted);margin-top:4px}.accent{color:var(--teal)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:15px}.box{border:1px solid var(--line);border-radius:17px;padding:16px;background:#fff}.box h3{margin:0 0 11px;font-size:15px;display:flex;align-items:center;gap:6px}.chart{height:250px;width:100%;position:relative}.chart svg{overflow:visible}.legend{display:flex;flex-wrap:wrap;gap:13px;font-size:12px;color:var(--muted);margin-top:7px}.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-left:5px}
+.goal-card{background:#f7fafc;border:1px solid var(--line);border-radius:15px;padding:14px}.goal-big{font-size:26px;font-weight:900;margin:6px 0;color:var(--navy)}.meter{height:12px;background:#e8edf4;border-radius:999px;overflow:hidden;margin:13px 0 7px}.meter span{display:block;height:100%;background:linear-gradient(90deg,var(--teal),#3bb7d6);border-radius:999px}.insight{margin-top:14px;padding:14px 16px;border-right:4px solid var(--teal);background:#eefaf7;border-radius:10px;color:#315c54}.warning{border-right-color:#e9a23b;background:#fff8e8;color:#72521c}
+.breakdown{display:grid;gap:8px}.row{display:flex;justify-content:space-between;gap:10px;padding-bottom:8px;border-bottom:1px dashed var(--line)}.row:last-child{border:0}.row span:first-child{color:var(--muted)}.assumption{font-size:11px;color:var(--muted);margin-top:16px;padding-top:13px;border-top:1px solid var(--line)}.privacy{font-size:11px;background:#edf8f5;color:#236359;border-radius:10px;padding:10px;margin-top:12px}.hide{display:none!important}
+.card{border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:12px;background:#fbfdff}.card-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:9px}.card-head input.name{border:0;background:transparent;font-weight:800;font-size:14px;padding:2px 4px;width:100%}.card-head input.name:focus{outline:1px solid var(--line);border-radius:6px}
+.grid3{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.toggle-row{display:flex;align-items:center;gap:7px;font-size:12px;color:#42526a;margin-bottom:9px}
+.sched-wrap{max-height:260px;overflow:auto;margin-top:9px;border:1px solid var(--line);border-radius:10px}
+.sched-table{width:100%;border-collapse:collapse;font-size:11px}.sched-table th{position:sticky;top:0;background:#f4f8fc;padding:6px 5px;color:var(--muted);text-align:center}.sched-table td{padding:5px;text-align:center;border-top:1px solid #f0f3f8}.sched-table tr.at-retire{background:#eefaf7;font-weight:800}
+.info{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;min-width:15px;border-radius:50%;background:#c7d3e3;color:#243349;font-size:10px;font-weight:800;cursor:help;position:relative;font-style:normal}
+.info:hover .tip,.info:focus .tip{display:block}
+.tip{display:none;position:absolute;bottom:135%;right:50%;transform:translateX(50%);background:#102a43;color:#fff;padding:9px 11px;border-radius:9px;font-size:11.5px;line-height:1.55;width:230px;box-shadow:0 10px 25px rgba(0,0,0,.28);z-index:80;font-weight:400;text-align:right}
+.tip::after{content:'';position:absolute;top:100%;right:50%;transform:translateX(50%);border:6px solid transparent;border-top-color:#102a43}
+.kpi .info{background:rgba(255,255,255,.35);color:#0d2941}
+.pill-tax{display:inline-block;font-size:10px;background:#fdeceb;color:var(--red);padding:2px 7px;border-radius:999px;margin-right:4px}
+.warnbox{margin-bottom:16px;padding:13px 16px;border-right:4px solid #e9a23b;background:#fff8e8;color:#72521c;border-radius:10px;font-size:13px;line-height:1.65}
+.warnbox strong{display:block;margin-bottom:2px}
+.warnbox ul{margin:4px 0 0;padding-right:18px}
+details.sched-more summary{cursor:pointer;font-size:12px;color:var(--blue);font-weight:700;margin-top:8px}
+details.sched-more summary:focus{outline:2px solid var(--blue)}
+@media print{
+ .hero,.panel,.actions,.tabs,#printBtn,.privacy{display:none!important}
+ body{background:#fff}
+ .shell{margin-top:0;padding-bottom:0}
+ .layout{display:block}
+ .results{box-shadow:none;border:0;padding:0}
+ .box{break-inside:avoid;page-break-inside:avoid}
+ .sched-wrap{max-height:none;overflow:visible}
+}
+@media(max-width:1020px){.layout{grid-template-columns:1fr}.panel{position:relative;max-height:none}.kpis{grid-template-columns:repeat(2,1fr)}.hero-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.wrap{padding:0 11px}.hero{padding-top:28px}.shell{margin-top:-35px}.results,.panel{border-radius:15px}.kpis{grid-template-columns:1fr 1fr;gap:8px}.kpi{padding:11px}.kpi .value{font-size:19px}.grid2{grid-template-columns:1fr}.headline{display:block}.status{display:inline-block;margin-top:9px}.asset-table{font-size:11px}.grid3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<div class="brand"><div class="logo">↗</div><div>מסלול לפרישה</div></div>
+<div class="hero-grid"><div><h1>הופכים את יעד הפרישה לתוכנית מספרית.</h1><p>הזינו את הנכסים הקיימים, ההפקדות, הקרנות והנדל״ן — כולל מיסוי ולוח סילוקין למשכנתא. המערכת תחשב תשואה משוקללת, הון וקצבה בפרישה, נטו ממס — ותראה מה נדרש כדי להגיע ליעד.</p></div>
+<div class="hero-note"><strong>כל הנכסים. תמונה אחת.</strong><span>כל החישובים מתבצעים מקומית בדפדפן. הנתונים נשמרים אוטומטית בדפדפן שלכם (localStorage) ואינם נשלחים לשרת.</span></div></div>
+</div></header>
+
+<main class="wrap shell"><div class="layout">
+<aside class="panel">
+<div class="tabs">
+<button class="tab active" data-tab="basic">בסיס</button>
+<button class="tab" data-tab="allocation">הקצאה</button>
+<button class="tab" data-tab="funds">קרנות</button>
+<button class="tab" data-tab="properties">נדל״ן</button>
+<button class="tab" data-tab="goal">יעד</button>
+<button class="tab" data-tab="advanced">מתקדם</button>
+</div>
+
+<section class="section active" id="basic">
+<h3>פרטי התכנון</h3>
+<div class="field"><label>גיל נוכחי <span class="info" data-tip-key="currentAge">i</span></label><div class="input-wrap"><input id="currentAge" type="number" min="18" max="90"><span class="suffix">שנים</span></div></div>
+<div class="field"><label>גיל פרישה <span class="info" data-tip-key="retirementAge">i</span></label><div class="input-wrap"><input id="retirementAge" type="number" min="30" max="90"><span class="suffix">שנים</span></div></div>
+<div class="field"><label>הפקדה חודשית לתיק <span class="info" data-tip-key="portfolioMonthly">i</span></label><div class="input-wrap"><input id="portfolioMonthly" type="number"><span class="suffix">₪</span></div></div>
+<div class="field"><label>אינפלציה שנתית <span class="info" data-tip-key="inflation">i</span></label><div class="input-wrap"><input id="inflation" type="number" step="0.1"><span class="suffix">%</span></div></div>
+<div class="field"><label>שיעור משיכה שנתי <span class="info" data-tip-key="withdrawal">i</span></label><div class="input-wrap"><input id="withdrawal" type="number" step="0.1"><span class="suffix">%</span></div></div>
+<div class="field"><label>דמי ניהול וגרירת עלות שנתיים <span class="info" data-tip-key="costDrag">i</span></label><div class="input-wrap"><input id="costDrag" type="number" step="0.1"><span class="suffix">%</span></div></div>
+</section>
+
+<section class="section" id="allocation">
+<h3>הקצאת תיק ההשקעות</h3>
+<table class="asset-table">
+<thead><tr><th>אפיק</th><th>שווי ₪</th><th>תשואה %</th><th>משקל</th><th></th></tr></thead>
+<tbody id="assetRows"></tbody>
+</table>
+<button class="btn secondary" id="addAsset" style="width:100%;margin-top:8px">+ הוספת אפיק</button>
+<div class="asset-total">
+<div class="mini"><span>שווי התיק</span><strong id="allocationTotal">—</strong></div>
+<div class="mini"><span>תשואה משוקללת</span><strong id="weightedReturn">—</strong></div>
+</div>
+<div class="field" style="margin-top:12px"><label>מס רווח הון בפדיון <span class="info" data-tip-key="portfolioTaxRate">i</span></label><div class="input-wrap"><input id="portfolioTaxRate" type="number" step="0.5"><span class="suffix">%</span></div></div>
+</section>
+
+<section class="section" id="funds">
+<h3>קרנות השתלמות / חיסכון נוסף <span class="info" data-tip-key="fundsGeneral">i</span></h3>
+<div id="fundCards"></div>
+<button class="btn secondary" id="addFund" style="width:100%;margin-top:4px">+ הוספת קרן</button>
+</section>
+
+<section class="section" id="properties">
+<h3>נכסי נדל״ן <span class="info" data-tip-key="propertiesGeneral">i</span></h3>
+<div id="propertyCards"></div>
+<button class="btn secondary" id="addProperty" style="width:100%;margin-top:4px">+ הוספת נכס</button>
+</section>
+
+<section class="section" id="goal">
+<h3>חתירה למטרה</h3>
+<div class="field"><label>סוג היעד <span class="info" data-tip-key="goalType">i</span></label><div class="input-wrap"><select id="goalType"><option value="income">קצבה חודשית ריאלית (נטו)</option><option value="capital">הון זמין ריאלי (נטו)</option></select></div></div>
+<div class="field"><label>סכום היעד</label><div class="input-wrap"><input id="goalAmount" type="number"><span class="suffix">₪</span></div></div>
+<div class="field"><label>מה לחשב? <span class="info" data-tip-key="solveFor">i</span></label><div class="input-wrap"><select id="solveFor"><option value="monthly">הפקדה חודשית נדרשת</option><option value="age">גיל פרישה נדרש</option><option value="return">תשואה משוקללת נדרשת</option></select></div></div>
+<div class="mini" style="margin-top:12px"><span>התוצאה הנדרשת</span><strong id="solveResult">—</strong><div id="solveExplanation" style="font-size:11px;color:var(--muted);margin-top:5px"></div></div>
+</section>
+
+<section class="section" id="advanced">
+<h3>מתקדם — לשימוש מפתחים <span class="info" data-tip-key="advancedGeneral">i</span></h3>
+<div class="field"><label>תדירות ריבית דריבית <span class="info" data-tip-key="compoundingPerYear">i</span></label><div class="input-wrap"><select id="compoundingPerYear"><option value="12">חודשית (12)</option><option value="4">רבעונית (4)</option><option value="1">שנתית (1)</option></select></div></div>
+<div class="field"><label>מועד הפקדה בחודש <span class="info" data-tip-key="contribTiming">i</span></label><div class="input-wrap"><select id="contribTiming"><option value="end">בסוף החודש</option><option value="start">בתחילת החודש</option></select></div></div>
+<div class="field"><label>ברירת מחדל: מס שכירות <span class="info" data-tip-key="defaultRentTax">i</span></label><div class="input-wrap"><input id="defaultRentTax" type="number" step="0.5"><span class="suffix">%</span></div></div>
+<div class="field"><label>ברירת מחדל: מס שבח במכירה <span class="info" data-tip-key="defaultSaleTax">i</span></label><div class="input-wrap"><input id="defaultSaleTax" type="number" step="0.5"><span class="suffix">%</span></div></div>
+<div class="field"><label>עיגול תוצאות (ספרות אחרי הנקודה) <span class="info" data-tip-key="roundDecimals">i</span></label><div class="input-wrap"><input id="roundDecimals" type="number" min="0" max="4"></div></div>
+</section>
+
+<div class="actions"><button class="btn primary" id="calculate">חישוב מחדש</button><button class="btn secondary" id="reset">איפוס לברירת מחדל</button></div>
+<div class="privacy">הנתונים נשמרים אוטומטית בדפדפן (localStorage בלבד) ואינם נשלחים לשרת. ניתן לאפס בכל עת.</div>
+</aside>
+
+<section class="results">
+<div class="headline"><div><h2>תחזית הפרישה שלכם</h2><p id="summaryLine">—</p></div><div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end"><div class="status" id="statusPill">—</div><button class="btn secondary small" id="printBtn">ייצוא / הדפסה</button></div></div>
+
+<div class="warnbox hide" id="warningsBox"></div>
+
+<div class="kpis">
+<div class="kpi feature"><div class="label">סך נכסים בפרישה — נומינלי ברוטו<span class="info" data-tip-key="kpiTotalNom">i</span></div><div class="value" id="totalAssetsNominal">—</div><div class="sub">פיננסי + שווי נקי של נדל״ן</div></div>
+<div class="kpi feature"><div class="label">סך נכסים — ריאלי נטו ממס<span class="info" data-tip-key="kpiTotalReal">i</span></div><div class="value" id="totalAssetsReal">—</div><div class="sub">במונחי כוח הקנייה של היום, אחרי מיסים</div></div>
+<div class="kpi feature"><div class="label">קצבה חודשית כוללת — נומינלית<span class="info" data-tip-key="kpiIncomeNom">i</span></div><div class="value" id="incomeNominal">—</div><div class="sub">משיכה מהון + שכירות, ברוטו</div></div>
+<div class="kpi feature"><div class="label">קצבה חודשית כוללת — ריאלית נטו<span class="info" data-tip-key="kpiIncomeReal">i</span></div><div class="value" id="incomeReal">—</div><div class="sub">במונחי היום, אחרי מיסים</div></div>
+</div>
+
+<div class="kpis" style="margin-top:11px">
+<div class="kpi"><div class="label">הון פיננסי נומינלי (ברוטו)<span class="info" data-tip-key="kpiFinancial">i</span></div><div class="value accent" id="financialNominal">—</div><div class="sub">תיק + כל הקרנות שנכללות</div></div>
+<div class="kpi"><div class="label">מס משוער על רווחי הון<span class="info" data-tip-key="kpiTaxTotal">i</span></div><div class="value accent" id="taxTotal">—</div><div class="sub">תיק + קרנות חייבות + מכירת נדל״ן</div></div>
+<div class="kpi"><div class="label">תשואה משוקללת בתיק<span class="info" data-tip-key="kpiReturn">i</span></div><div class="value accent" id="returnKpi">—</div><div class="sub">לפני עלויות ומס</div></div>
+<div class="kpi"><div class="label">שווי נדל״ן נקי ריאלי<span class="info" data-tip-key="kpiPropertyReal">i</span></div><div class="value accent" id="propertyReal">—</div><div class="sub">שווי פחות יתרת משכנתא, לכלל הנכסים</div></div>
+</div>
+
+<div class="grid2">
+<div class="box"><h3>השוואת הון נומינלי מול ריאלי<span class="info" data-tip-key="chartCapital">i</span></h3><div class="chart"><svg id="capitalChart" viewBox="0 0 720 250" preserveAspectRatio="none" width="100%" height="100%"></svg></div><div class="legend"><span><i style="background:#2563eb"></i>נומינלי</span><span><i style="background:#0f9f8f"></i>ריאלי</span></div></div>
+<div class="box"><h3>הקצאת נכסים נוכחית<span class="info" data-tip-key="chartAllocation">i</span></h3><div class="chart"><svg id="allocationChart" viewBox="0 0 420 250" width="100%" height="100%"></svg></div><div class="legend" id="allocationLegend"></div></div>
+</div>
+
+<div class="grid2">
+<div class="box"><h3>עמידה ביעד<span class="info" data-tip-key="goalCard">i</span></h3><div class="goal-card"><div id="goalLabel" style="color:var(--muted);font-size:13px">—</div><div class="goal-big" id="goalDisplay">—</div><div class="meter"><span id="goalMeter" style="width:0%"></span></div><div id="goalPercent" style="font-size:13px;color:var(--muted)">—</div></div><div class="insight" id="insight">—</div></div>
+<div class="box"><h3>פירוט מקורות בפרישה (נומינלי)<span class="info" data-tip-key="breakdownCard">i</span></h3><div class="breakdown" id="breakdownRows"></div></div>
+</div>
+
+<div class="box" style="margin-top:14px"><h3>לוחות סילוקין למשכנתאות<span class="info" data-tip-key="mortgageSchedules">i</span></h3><div id="scheduleArea" style="font-size:13px;color:var(--muted)">אין נכסים עם משכנתא פעילה. ניתן להוסיף משכנתא בלשונית "נדל״ן".</div></div>
+
+<div class="assumption">החישוב הוא כלי תכנון בלבד ואינו ייעוץ השקעות, מס, משכנתאות או פנסיה. המודל מניח תשואות, אינפלציה ושיעורי מס קבועים לאורך התקופה, והפקדות/תשלומים אחידים מדי חודש. שיעורי המס הם קירוב בלבד ואינם מהווים חוות דעת מיסויית.</div>
+</section>
+</div></main>
+
+<script>
+const $=id=>document.getElementById(id);
+const COLORS=['#2563eb','#0f9f8f','#f59e0b','#8b5cf6','#ef4444','#14b8a6','#64748b','#ec4899','#84cc16','#06b6d4'];
+let uidCounter=1;
+const uid=()=>'id'+(uidCounter++)+'_'+Math.random().toString(36).slice(2,7);
+
+const TIPS={
+ currentAge:'הגיל שלכם היום. קובע כמה שנים נותרו עד הפרישה, ומשפיע על אורך תקופת הצבירה בכל הנכסים.',
+ retirementAge:'הגיל שבו מתוכננת הפרישה. ככל שהוא גבוה יותר — יש יותר שנות צבירה (תשואה + הפקדות) ופחות שנות משיכה.',
+ portfolioMonthly:'סכום קבוע שמופקד מדי חודש לתיק ההשקעות (לשונית "הקצאה"). משפיע ישירות על ההון הצבור, בנוסף לתשואה.',
+ inflation:'שיעור עליית המחירים השנתי הצפוי. משמש להמרת סכומים נומינליים (עתידיים) לערכים ריאליים (כוח קנייה של היום).',
+ withdrawal:'אחוז מההון הזמין שנמשך מדי שנה בפרישה (כלל אצבע נפוץ: 4%). קובע את הקצבה החודשית מהתיק והקרנות.',
+ costDrag:'דמי ניהול, עמלות ומיסוי שוטף שמקטינים את התשואה נטו כל שנה, לפני חישוב הצבירה בפועל.',
+ portfolioTaxRate:'שיעור מס רווחי הון שיחול על הרווח הנצבר בתיק בעת המשיכה/הפדיון (בישראל כיום כ-25% על רווח ריאלי).',
+ fundsGeneral:'ניתן להוסיף מספר בלתי מוגבל של קרנות (השתלמות, גמל להשקעה, IRA וכו׳). לכל קרן פרמטרים, מיסוי והכללה בפרישה משלה.',
+ fundInitial:'היתרה הצבורה כיום בקרן זו.',
+ fundMonthly:'הפקדה חודשית קבועה לקרן זו.',
+ fundReturn:'תשואה שנתית ברוטו צפויה לקרן זו.',
+ fundInclude:'האם לכלול את יתרת הקרן בהון הזמין למשיכה/קצבה בפרישה (למשל קרן שאינה נזילה עדיין - לא לכלול).',
+ fundTaxFree:'קרן השתלמות "מוכרת" שנפדית אחרי 6 שנים פטורה ממס רווח הון. סמנו אם הקרן פטורה ממס.',
+ fundTaxRate:'שיעור המס שיחול על הרווח בקרן זו בעת פדיון, אם אינה פטורה ממס.',
+ propertiesGeneral:'ניתן להוסיף מספר נכסי נדל״ן. לכל נכס אסטרטגיית פרישה, משכנתא נפרדת עם לוח סילוקין, ומיסוי עצמאי.',
+ propStrategy:'מה קורה לנכס בפרישה: שמירה (ללא מכירה/השכרה), מכירה חד-פעמית, או השכרה שוטפת.',
+ propValue:'שווי השוק המוערך של הנכס כיום.',
+ propGrowth:'קצב עליית ערך שנתי צפוי לנכס.',
+ propSellingCost:'עלויות מכירה (תיווך, עו״ד וכו׳) כאחוז משווי המכירה.',
+ propSaleTax:'מס שבח משוער על הרווח הריאלי במכירה (שווי מכירה בניכוי שווי היום, לפני עלויות).',
+ mortgageEnabled:'הפעילו אם יש משכנתא פעילה על הנכס — יאפשר חישוב יתרה עתידית ולוח סילוקין.',
+ mortgagePrincipal:'הסכום המקורי שנלקח במשכנתא.',
+ mortgageRate:'הריבית השנתית הממוצעת על המשכנתא (שיעור אפקטיבי מתמיד לצורך הדמיה).',
+ mortgageTerm:'תקופת המשכנתא הכוללת בשנים.',
+ mortgageElapsed:'כמה שנים כבר שולמו על המשכנתא עד היום.',
+ rentToday:'שכר דירה חודשי ברוטו לפי מחירי היום, אם הנכס יושכר בפרישה.',
+ rentGrowth:'קצב עליית שכר הדירה השנתי הצפוי.',
+ occupancy:'אחוז התפוסה השנתי הצפוי (100% פחות תקופות ריקות בין דיירים).',
+ propertyExpenses:'הוצאות שנתיות שוטפות על הנכס (ועד בית, ביטוח, תחזוקה) לפי מחירי היום.',
+ rentTaxRate:'שיעור המס על הכנסה משכירות (בישראל יש מסלול פטור חלקי / 10% על הכנסה מלאה / מדרגות מס רגילות).',
+ goalType:'האם היעד מוגדר כקצבה חודשית ריאלית נטו, או כסכום הון ריאלי נטו זמין בפרישה.',
+ solveFor:'איזה משתנה המערכת תפתור אוטומטית כדי להגיע ליעד שהוגדר, בהינתן שאר הפרמטרים קבועים.',
+ compoundingPerYear:'כמה פעמים בשנה מתבצע חישוב ריבית-דריבית על הנכסים הפיננסיים. משפיע מעט על קצב הצבירה בפועל.',
+ contribTiming:'האם ההפקדה החודשית מתבצעת בתחילת החודש (נצברת תשואה על ההפקדה כבר באותו חודש) או בסופו.',
+ defaultRentTax:'שיעור מס שכירות שישמש כברירת מחדל בעת הוספת נכס חדש להשכרה.',
+ defaultSaleTax:'שיעור מס שבח שישמש כברירת מחדל בעת הוספת נכס חדש.',
+ roundDecimals:'מספר הספרות אחרי הנקודה בתצוגת אחוזים בתוצאות (לשימוש מפתחים/בדיקות דיוק).',
+ advancedGeneral:'הגדרות טכניות שמשפיעות על אופן החישוב הפנימי (תדירות ריבית-דריבית, מועד הפקדה, ברירות מחדל למיסוי ועיגול תצוגה). לרוב המשתמשים ניתן להשאיר כברירת המחדל.',
+ kpiTotalNom:'סך כל הנכסים הפיננסיים (ברוטו, לפני מס) בתוספת השווי הנקי של הנדל״ן, בערכים נומינליים (עתידיים) בגיל הפרישה.',
+ kpiTotalReal:'כמו הנתון הנומינלי, אך לאחר ניכוי המסים המשוערים ולאחר המרה לערכי כוח קנייה של היום.',
+ kpiIncomeNom:'הקצבה החודשית הצפויה (משיכה מההון + שכירות נטו) בערכים נומינליים ביום הפרישה, ברוטו.',
+ kpiIncomeReal:'הקצבה החודשית הצפויה במונחי כוח קנייה של היום, לאחר ניכוי מיסים משוערים.',
+ kpiFinancial:'סך התיק וכל הקרנות שסומנו לכלול בהון הזמין, בערכים נומינליים, לפני מס.',
+ kpiTaxTotal:'סכום המס המשוער הכולל על כלל הנכסים הפיננסיים החייבים ועל מכירת נדל״ן, בערכים נומינליים.',
+ kpiReturn:'התשואה השנתית הממוצעת המשוקללת של אפיקי התיק, לפי המשקל היחסי של כל אפיק.',
+ kpiPropertyReal:'סכום השווי הנקי (שווי פחות יתרת משכנתא) של כלל נכסי הנדל״ן שאינם נמכרים, בערכי היום.',
+ chartCapital:'עקומת ההון הצפוי (סך כל הנכסים) מהיום ועד גיל הפרישה, בהשוואת ערך נומינלי מול ערך ריאלי.',
+ chartAllocation:'התפלגות שווי הנכסים בתיק ההשקעות כיום, לפי אפיק.',
+ goalCard:'מציג את אחוז הכיסוי של היעד שהוגדר בלשונית "יעד" ביחס לתחזית בפועל.',
+ breakdownCard:'פירוט תרומתו של כל מקור הון (תיק, כל קרן וקרן, כל נכס נדל״ן) לסך הנכסים בפרישה.',
+ mortgageSchedules:'לוח סילוקין שנתי לכל משכנתא פעילה: יתרת פתיחה, ריבית, קרן ויתרת סגירה בכל שנה עד תום התקופה.'
+};
+function tipify(){document.querySelectorAll('[data-tip-key]').forEach(el=>{const k=el.getAttribute('data-tip-key');if(TIPS[k]&&!el.querySelector('.tip')){const s=document.createElement('span');s.className='tip';s.textContent=TIPS[k];el.appendChild(s)}})}
+
+function defaultState(){
+ return {
+  basic:{currentAge:30,retirementAge:67,portfolioMonthly:1000,inflation:2.5,withdrawal:4,costDrag:0},
+  advanced:{compoundingPerYear:12,contribTiming:'end',defaultRentTax:10,defaultSaleTax:25,roundDecimals:2},
+  portfolioTaxRate:25,
+  assets:[
+   {id:uid(),name:'קרן סל מניות גלובלית',value:50000,ret:8.5},
+   {id:uid(),name:'מניות ישראל',value:10000,ret:8},
+   {id:uid(),name:'מניות ארה״ב',value:20000,ret:10},
+   {id:uid(),name:'אג״ח קונצרני',value:10000,ret:5},
+   {id:uid(),name:'אג״ח ממשלתי',value:0,ret:4},
+   {id:uid(),name:'סחורות',value:0,ret:4},
+   {id:uid(),name:'מזומן',value:10000,ret:2.5}
+  ],
+  funds:[
+   {id:uid(),name:'קרן השתלמות',initial:50000,monthly:500,ret:5,include:true,taxFree:true,taxRate:25}
+  ],
+  properties:[
+   {id:uid(),name:'דירת מגורים',strategy:'none',value:0,growth:3,sellingCost:3,saleTax:25,
+    mortgage:{enabled:false,principal:0,rate:4.5,termYears:25,yearsElapsed:0},
+    rent:{today:0,growth:2.5,occupancy:95,expenses:0,taxRate:10}}
+  ],
+  goal:{type:'income',amount:10000,solveFor:'monthly'}
+ };
+}
+let state=null;
+const STORAGE_KEY='retirementCalcStateV1';
+function saveState(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catch(e){}}
+function loadState(){
+ try{
+  const raw=localStorage.getItem(STORAGE_KEY);
+  if(raw){const parsed=JSON.parse(raw);if(parsed&&parsed.basic)return parsed}
+ }catch(e){}
+ return defaultState();
+}
+
+function n(v,fallback=0){const x=Number(v);return isFinite(x)?x:fallback}
+function money(v){if(!isFinite(v))return '—';return new Intl.NumberFormat('he-IL',{style:'currency',currency:'ILS',maximumFractionDigits:0}).format(v)}
+function pctFmt(v){const d=n(state.advanced.roundDecimals,2);return v.toFixed(d)+'%'}
+
+function futureValueWithComp(initial,monthly,annualRate,years){
+ const compPerYear=n(state.advanced.compoundingPerYear,12);
+ const months=Math.max(0,Math.round(years*12));
+ const periodRate=Math.pow(Math.max(-0.9999,1+annualRate),1/compPerYear)-1;
+ const periodsPerMonth=compPerYear/12;
+ const rm=Math.pow(1+periodRate,periodsPerMonth)-1;
+ if(!months)return initial;
+ const timing=state.advanced.contribTiming;
+ if(Math.abs(rm)<1e-10)return initial+monthly*months;
+ let fv=initial*Math.pow(1+rm,months);
+ const annuity=monthly*(Math.pow(1+rm,months)-1)/rm;
+ fv+=timing==='start'?annuity*(1+rm):annuity;
+ return fv;
+}
+
+/* ---------- Basic / Advanced binding ---------- */
+function bindSimple(containerIds,getObj){
+ containerIds.forEach(id=>{
+  const el=$(id);
+  if(!el)return;
+  const isSelect=el.tagName==='SELECT';
+  const obj=getObj();
+  el.value=obj[id]??el.value;
+  if(el.dataset.bound)return;
+  el.dataset.bound='1';
+  el.addEventListener('input',()=>{
+   const o=getObj();
+   o[id]=isSelect?el.value:(el.type==='number'?n(el.value):el.value);
+   saveState();calculate();
+  });
+ });
+}
+function bindGoalField(elId,key){
+ const el=$(elId);
+ const isSelect=el.tagName==='SELECT';
+ el.value=state.goal[key]??el.value;
+ if(el.dataset.bound)return;
+ el.dataset.bound='1';
+ el.addEventListener('input',()=>{
+  state.goal[key]=isSelect?el.value:(el.type==='number'?n(el.value):el.value);
+  saveState();calculate();
+ });
+}
+
+/* ---------- Assets (portfolio allocation) ---------- */
+function renderAssets(){
+ const tbody=$('assetRows');tbody.innerHTML='';
+ if(!state.assets.length){tbody.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:12px 4px">לא נותרו אפיקים בתיק. לחצו על "+ הוספת אפיק" כדי להתחיל.</td></tr>'}
+ state.assets.forEach(a=>{
+  const tr=document.createElement('tr');
+  tr.innerHTML=`<td><input class="asset-name" value="${a.name.replaceAll('"','&quot;')}"></td>
+  <td><input class="asset-value" type="number" value="${a.value}"></td>
+  <td><input class="asset-return" type="number" step="0.1" value="${a.ret}"></td>
+  <td class="asset-weight">0%</td>
+  <td><button class="btn danger small" data-del="${a.id}">✕</button></td>`;
+  tbody.appendChild(tr);
+  tr.querySelector('.asset-name').addEventListener('input',e=>{a.name=e.target.value;saveState();calculate()});
+  tr.querySelector('.asset-value').addEventListener('input',e=>{a.value=n(e.target.value);saveState();calculate()});
+  tr.querySelector('.asset-return').addEventListener('input',e=>{a.ret=n(e.target.value);saveState();calculate()});
+  tr.querySelector('[data-del]').addEventListener('click',()=>{state.assets=state.assets.filter(x=>x.id!==a.id);saveState();renderAssets();calculate()});
+ });
+ $('portfolioTaxRate').value=state.portfolioTaxRate;
+}
+$('addAsset').onclick=()=>{state.assets.push({id:uid(),name:'אפיק חדש',value:0,ret:0});saveState();renderAssets();calculate()};
+$('portfolioTaxRate').addEventListener('input',e=>{state.portfolioTaxRate=n(e.target.value);saveState();calculate()});
+
+function assetData(){
+ const total=state.assets.reduce((s,x)=>s+x.value,0);
+ const weighted=total?state.assets.reduce((s,x)=>s+x.value*(x.ret/100),0)/total:0;
+ document.querySelectorAll('#assetRows tr').forEach((tr,i)=>{
+  const cell=tr.querySelector('.asset-weight');
+  if(!cell)return;
+  const val=state.assets[i]?state.assets[i].value:0;
+  cell.textContent=total?`${(val/total*100).toFixed(1)}%`:'0%';
+ });
+ $('allocationTotal').textContent=money(total);$('weightedReturn').textContent=pctFmt(weighted*100);
+ return{total,weighted};
+}
+
+/* ---------- Funds ---------- */
+function renderFunds(){
+ const wrap=$('fundCards');wrap.innerHTML='';
+ if(!state.funds.length){wrap.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:14px">אין קרנות כרגע. לחצו על "+ הוספת קרן" כדי להוסיף קרן השתלמות, גמל להשקעה או חיסכון אחר.</div>'}
+ state.funds.forEach(f=>{
+  const card=document.createElement('div');card.className='card';
+  card.innerHTML=`<div class="card-head"><input class="name" value="${f.name.replaceAll('"','&quot;')}"><button class="btn danger small" data-del="${f.id}">מחיקה</button></div>
+  <div class="grid3">
+   <div class="field"><label>יתרה קיימת <span class="info" data-tip-key="fundInitial">i</span></label><div class="input-wrap"><input type="number" class="f-initial" value="${f.initial}"><span class="suffix">₪</span></div></div>
+   <div class="field"><label>הפקדה חודשית <span class="info" data-tip-key="fundMonthly">i</span></label><div class="input-wrap"><input type="number" class="f-monthly" value="${f.monthly}"><span class="suffix">₪</span></div></div>
+   <div class="field"><label>תשואה שנתית <span class="info" data-tip-key="fundReturn">i</span></label><div class="input-wrap"><input type="number" step="0.1" class="f-return" value="${f.ret}"><span class="suffix">%</span></div></div>
+   <div class="field"><label>מס בפדיון <span class="info" data-tip-key="fundTaxRate">i</span></label><div class="input-wrap"><input type="number" step="0.5" class="f-taxrate" value="${f.taxRate}" ${f.taxFree?'disabled':''}><span class="suffix">%</span></div></div>
+  </div>
+  <div class="toggle-row"><input type="checkbox" class="f-include" ${f.include?'checked':''} id="inc_${f.id}"><label for="inc_${f.id}" style="margin:0">לכלול בהון הזמין לקצבה <span class="info" data-tip-key="fundInclude">i</span></label></div>
+  <div class="toggle-row"><input type="checkbox" class="f-taxfree" ${f.taxFree?'checked':''} id="tf_${f.id}"><label for="tf_${f.id}" style="margin:0">פטורה ממס (למשל קרן השתלמות מוכרת) <span class="info" data-tip-key="fundTaxFree">i</span></label></div>`;
+  wrap.appendChild(card);
+  card.querySelector('.name').addEventListener('input',e=>{f.name=e.target.value;saveState();calculate()});
+  card.querySelector('.f-initial').addEventListener('input',e=>{f.initial=n(e.target.value);saveState();calculate()});
+  card.querySelector('.f-monthly').addEventListener('input',e=>{f.monthly=n(e.target.value);saveState();calculate()});
+  card.querySelector('.f-return').addEventListener('input',e=>{f.ret=n(e.target.value);saveState();calculate()});
+  card.querySelector('.f-taxrate').addEventListener('input',e=>{f.taxRate=n(e.target.value);saveState();calculate()});
+  card.querySelector('.f-include').addEventListener('change',e=>{f.include=e.target.checked;saveState();calculate()});
+  card.querySelector('.f-taxfree').addEventListener('change',e=>{f.taxFree=e.target.checked;card.querySelector('.f-taxrate').disabled=f.taxFree;saveState();calculate()});
+  card.querySelector('[data-del]').addEventListener('click',()=>{state.funds=state.funds.filter(x=>x.id!==f.id);saveState();renderFunds();calculate()});
+ });
+ tipify();
+}
+$('addFund').onclick=()=>{state.funds.push({id:uid(),name:'קרן חדשה',initial:0,monthly:0,ret:5,include:true,taxFree:false,taxRate:25});saveState();renderFunds();calculate()};
+
+/* ---------- Properties ---------- */
+function renderProperties(){
+ const wrap=$('propertyCards');wrap.innerHTML='';
+ if(!state.properties.length){wrap.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:14px">אין נכסי נדל״ן כרגע. לחצו על "+ הוספת נכס" כדי להוסיף נכס.</div>'}
+ state.properties.forEach(p=>{
+  const card=document.createElement('div');card.className='card';
+  card.innerHTML=`<div class="card-head"><input class="name" value="${p.name.replaceAll('"','&quot;')}"><button class="btn danger small" data-del="${p.id}">מחיקה</button></div>
+  <div class="field"><label>אסטרטגיה בפרישה <span class="info" data-tip-key="propStrategy">i</span></label><div class="input-wrap"><select class="p-strategy">
+   <option value="none" ${p.strategy==='none'?'selected':''}>שמירת הנכס בלבד</option>
+   <option value="sell" ${p.strategy==='sell'?'selected':''}>מכירה בפרישה</option>
+   <option value="rent" ${p.strategy==='rent'?'selected':''}>השכרה בפרישה</option>
+  </select></div></div>
+  <div class="grid3">
+   <div class="field"><label>שווי כיום <span class="info" data-tip-key="propValue">i</span></label><div class="input-wrap"><input type="number" class="p-value" value="${p.value}"><span class="suffix">₪</span></div></div>
+   <div class="field"><label>עליית ערך שנתית <span class="info" data-tip-key="propGrowth">i</span></label><div class="input-wrap"><input type="number" step="0.1" class="p-growth" value="${p.growth}"><span class="suffix">%</span></div></div>
+  </div>
+  <div class="p-sell grid3 ${p.strategy==='sell'?'':'hide'}">
+   <div class="field"><label>עלויות מכירה <span class="info" data-tip-key="propSellingCost">i</span></label><div class="input-wrap"><input type="number" step="0.1" class="p-sellcost" value="${p.sellingCost}"><span class="suffix">%</span></div></div>
+   <div class="field"><label>מס שבח <span class="info" data-tip-key="propSaleTax">i</span></label><div class="input-wrap"><input type="number" step="0.5" class="p-saletax" value="${p.saleTax}"><span class="suffix">%</span></div></div>
+  </div>
+  <div class="p-rent grid3 ${p.strategy==='rent'?'':'hide'}">
+   <div class="field"><label>שכ״ד חודשי כיום <span class="info" data-tip-key="rentToday">i</span></label><div class="input-wrap"><input type="number" class="p-rent-today" value="${p.rent.today}"><span class="suffix">₪</span></div></div>
+   <div class="field"><label>עליית שכ״ד שנתית <span class="info" data-tip-key="rentGrowth">i</span></label><div class="input-wrap"><input type="number" step="0.1" class="p-rent-growth" value="${p.rent.growth}"><span class="suffix">%</span></div></div>
+   <div class="field"><label>תפוסה <span class="info" data-tip-key="occupancy">i</span></label><div class="input-wrap"><input type="number" class="p-occupancy" value="${p.rent.occupancy}"><span class="suffix">%</span></div></div>
+   <div class="field"><label>הוצאות שנתיות כיום <span class="info" data-tip-key="propertyExpenses">i</span></label><div class="input-wrap"><input type="number" class="p-expenses" value="${p.rent.expenses}"><span class="suffix">₪</span></div></div>
+   <div class="field"><label>מס שכירות <span class="info" data-tip-key="rentTaxRate">i</span></label><div class="input-wrap"><input type="number" step="0.5" class="p-rent-tax" value="${p.rent.taxRate}"><span class="suffix">%</span></div></div>
+  </div>
+  <div class="subhead"><span class="dot"></span>משכנתא</div>
+  <div class="toggle-row"><input type="checkbox" class="p-mort-enabled" ${p.mortgage.enabled?'checked':''} id="me_${p.id}"><label for="me_${p.id}" style="margin:0">יש משכנתא פעילה <span class="info" data-tip-key="mortgageEnabled">i</span></label></div>
+  <div class="p-mort-fields grid3 ${p.mortgage.enabled?'':'hide'}">
+   <div class="field"><label>קרן מקורית <span class="info" data-tip-key="mortgagePrincipal">i</span></label><div class="input-wrap"><input type="number" class="p-mort-principal" value="${p.mortgage.principal}"><span class="suffix">₪</span></div></div>
+   <div class="field"><label>ריבית שנתית <span class="info" data-tip-key="mortgageRate">i</span></label><div class="input-wrap"><input type="number" step="0.1" class="p-mort-rate" value="${p.mortgage.rate}"><span class="suffix">%</span></div></div>
+   <div class="field"><label>תקופה (שנים) <span class="info" data-tip-key="mortgageTerm">i</span></label><div class="input-wrap"><input type="number" class="p-mort-term" value="${p.mortgage.termYears}"><span class="suffix">שנים</span></div></div>
+   <div class="field"><label>שנים ששולמו עד היום <span class="info" data-tip-key="mortgageElapsed">i</span></label><div class="input-wrap"><input type="number" class="p-mort-elapsed" value="${p.mortgage.yearsElapsed}"><span class="suffix">שנים</span></div></div>
+  </div>
+  <div class="p-mort-fields ${p.mortgage.enabled?'':'hide'}"><button class="btn secondary small p-mort-toggle" style="width:100%;margin-top:4px">הצג/הסתר לוח סילוקין</button><div class="p-sched-here"></div></div>`;
+  wrap.appendChild(card);
+
+  const q=sel=>card.querySelector(sel);
+  q('.name').addEventListener('input',e=>{p.name=e.target.value;saveState();calculate()});
+  q('.p-strategy').addEventListener('change',e=>{p.strategy=e.target.value;q('.p-sell').classList.toggle('hide',p.strategy!=='sell');q('.p-rent').classList.toggle('hide',p.strategy!=='rent');saveState();calculate()});
+  q('.p-value').addEventListener('input',e=>{p.value=n(e.target.value);saveState();calculate()});
+  q('.p-growth').addEventListener('input',e=>{p.growth=n(e.target.value);saveState();calculate()});
+  q('.p-sellcost').addEventListener('input',e=>{p.sellingCost=n(e.target.value);saveState();calculate()});
+  q('.p-saletax').addEventListener('input',e=>{p.saleTax=n(e.target.value);saveState();calculate()});
+  q('.p-rent-today').addEventListener('input',e=>{p.rent.today=n(e.target.value);saveState();calculate()});
+  q('.p-rent-growth').addEventListener('input',e=>{p.rent.growth=n(e.target.value);saveState();calculate()});
+  q('.p-occupancy').addEventListener('input',e=>{p.rent.occupancy=n(e.target.value);saveState();calculate()});
+  q('.p-expenses').addEventListener('input',e=>{p.rent.expenses=n(e.target.value);saveState();calculate()});
+  q('.p-rent-tax').addEventListener('input',e=>{p.rent.taxRate=n(e.target.value);saveState();calculate()});
+  const refreshSched=()=>{const host=q('.p-sched-here');if(host&&host.innerHTML)host.innerHTML=renderScheduleTable(p,mortgageInfo(p))};
+  q('.p-mort-enabled').addEventListener('change',e=>{p.mortgage.enabled=e.target.checked;card.querySelectorAll('.p-mort-fields').forEach(el=>el.classList.toggle('hide',!p.mortgage.enabled));saveState();calculate();refreshSched()});
+  q('.p-mort-principal').addEventListener('input',e=>{p.mortgage.principal=n(e.target.value);saveState();calculate();refreshSched()});
+  q('.p-mort-rate').addEventListener('input',e=>{p.mortgage.rate=n(e.target.value);saveState();calculate();refreshSched()});
+  q('.p-mort-term').addEventListener('input',e=>{p.mortgage.termYears=n(e.target.value);saveState();calculate();refreshSched()});
+  q('.p-mort-elapsed').addEventListener('input',e=>{p.mortgage.yearsElapsed=n(e.target.value);saveState();calculate();refreshSched()});
+  const toggleBtn=q('.p-mort-toggle');
+  if(toggleBtn)toggleBtn.addEventListener('click',()=>{
+   const host=q('.p-sched-here');
+   if(host.innerHTML){host.innerHTML='';return}
+   host.innerHTML=renderScheduleTable(p,mortgageInfo(p));
+  });
+  card.querySelector('[data-del]').addEventListener('click',()=>{state.properties=state.properties.filter(x=>x.id!==p.id);saveState();renderProperties();calculate()});
+ });
+ tipify();
+}
+$('addProperty').onclick=()=>{state.properties.push({id:uid(),name:'נכס חדש',strategy:'none',value:0,growth:3,sellingCost:3,saleTax:n(state.advanced.defaultSaleTax,25),mortgage:{enabled:false,principal:0,rate:4.5,termYears:25,yearsElapsed:0},rent:{today:0,growth:2.5,occupancy:95,expenses:0,taxRate:n(state.advanced.defaultRentTax,10)}});saveState();renderProperties();calculate()};
+
+/* ---------- Mortgage amortization ---------- */
+function mortgageInfo(p){
+ const m=p.mortgage;
+ if(!m.enabled||m.principal<=0||m.termYears<=0)return null;
+ const r=n(m.rate)/100/12,N=Math.round(n(m.termYears)*12);
+ const payment=Math.abs(r)<1e-9?m.principal/N:m.principal*r/(1-Math.pow(1+r,-N));
+ const balanceAt=(months)=>{
+  const k=Math.min(Math.max(0,months),N);
+  if(Math.abs(r)<1e-9)return Math.max(0,m.principal-payment*k);
+  return Math.max(0,m.principal*Math.pow(1+r,k)-payment*(Math.pow(1+r,k)-1)/r);
+ };
+ const yearsElapsed=Math.max(0,n(m.yearsElapsed));
+ return{r,N,payment,balanceAt,yearsElapsed,principal:m.principal,termYears:m.termYears,rate:m.rate};
+}
+function mortgageBalanceAtRetirement(p,yearsFromNowToRetirement){
+ const info=mortgageInfo(p);
+ if(!info)return 0;
+ const monthsAtRetirement=Math.round((info.yearsElapsed+Math.max(0,yearsFromNowToRetirement))*12);
+ return info.balanceAt(monthsAtRetirement);
+}
+function renderScheduleTable(p,info){
+ if(!info)return '<div style="font-size:12px;color:var(--muted)">אין נתוני משכנתא מלאים.</div>';
+ const retireYears=Math.max(0,n(state.basic.retirementAge)-n(state.basic.currentAge));
+ const retireMonth=Math.round((info.yearsElapsed+retireYears)*12);
+ const rowsArr=[];
+ let balance=info.principal,retireRowIndex=-1;
+ for(let y=1;y<=Math.ceil(info.N/12);y++){
+  const openBal=balance;
+  let yearInterest=0,yearPrincipal=0;
+  for(let mI=0;mI<12;mI++){
+   const monthIndex=(y-1)*12+mI;
+   if(monthIndex>=info.N)break;
+   const interest=balance*info.r;
+   const principalPaid=Math.min(balance,info.payment-interest);
+   yearInterest+=interest;yearPrincipal+=principalPaid;
+   balance=Math.max(0,balance-principalPaid);
+  }
+  const isRetireYear=retireMonth>(y-1)*12&&retireMonth<=y*12;
+  if(isRetireYear)retireRowIndex=rowsArr.length;
+  rowsArr.push(`<tr class="${isRetireYear?'at-retire':''}"><td>${y}${isRetireYear?' (פרישה)':''}</td><td>${money(openBal)}</td><td>${money(yearInterest)}</td><td>${money(yearPrincipal)}</td><td>${money(balance)}</td></tr>`);
+  if(balance<=0)break;
+ }
+ const head='<thead><tr><th>שנה</th><th>יתרת פתיחה</th><th>ריבית</th><th>קרן</th><th>יתרת סגירה</th></tr></thead>';
+ const summary=`<div style="font-size:12px;margin:6px 0"><strong>תשלום חודשי:</strong> ${money(info.payment)} &nbsp; <strong>יתרה כיום:</strong> ${money(info.balanceAt(Math.round(info.yearsElapsed*12)))}</div>`;
+ const hasTail=retireRowIndex>=0&&retireRowIndex<rowsArr.length-1;
+ if(hasTail){
+  const before=rowsArr.slice(0,retireRowIndex+1).join('');
+  const after=rowsArr.slice(retireRowIndex+1).join('');
+  const afterCount=rowsArr.length-retireRowIndex-1;
+  return `${summary}
+  <div class="sched-wrap"><table class="sched-table">${head}<tbody>${before}</tbody></table></div>
+  <details class="sched-more"><summary>הצג המשך הלוח לאחר הפרישה (עוד ${afterCount} שנים עד תום המשכנתא)</summary>
+  <div class="sched-wrap" style="margin-top:6px"><table class="sched-table">${head}<tbody>${after}</tbody></table></div></details>`;
+ }
+ return `${summary}<div class="sched-wrap"><table class="sched-table">${head}<tbody>${rowsArr.join('')}</tbody></table></div>`;
+}
+function renderAllSchedules(){
+ const active=state.properties.filter(p=>p.mortgage&&p.mortgage.enabled&&p.mortgage.principal>0);
+ const area=$('scheduleArea');
+ if(!active.length){area.innerHTML='אין נכסים עם משכנתא פעילה. ניתן להוסיף משכנתא בלשונית "נדל״ן".';return}
+ area.innerHTML=active.map(p=>{
+  const info=mortgageInfo(p);
+  return `<div style="margin-bottom:16px"><div style="font-weight:800;margin-bottom:4px">${p.name}</div>${renderScheduleTable(p,info)}</div>`;
+ }).join('');
+}
+
+/* ---------- Core model ---------- */
+function model(overrides={}){
+ const {total:assetsTotal,weighted}=assetData();
+ const currentAge=overrides.currentAge??n(state.basic.currentAge),retirementAge=overrides.retirementAge??n(state.basic.retirementAge);
+ const years=Math.max(0,retirementAge-currentAge),infl=n(state.basic.inflation)/100,factor=Math.pow(1+infl,years);
+ const grossRate=overrides.portfolioReturn??weighted,pRate=grossRate-n(state.basic.costDrag)/100;
+ const pMonthly=overrides.portfolioMonthly??n(state.basic.portfolioMonthly);
+ const pNom=futureValueWithComp(assetsTotal,pMonthly,pRate,years);
+ const portfolioContrib=assetsTotal+pMonthly*Math.round(years*12);
+ const portfolioGain=Math.max(0,pNom-portfolioContrib);
+ const portfolioTax=portfolioGain*(n(state.portfolioTaxRate)/100);
+ const pNomNet=pNom-portfolioTax;
+
+ let fNomGrossTotal=0,fNomNetTotal=0,fNomAccessibleGross=0,fNomAccessibleNet=0,fundTaxTotal=0;
+ const fundBreak=[];
+ state.funds.forEach(f=>{
+  const fNom=futureValueWithComp(n(f.initial),n(f.monthly),n(f.ret)/100,years);
+  const contrib=n(f.initial)+n(f.monthly)*Math.round(years*12);
+  const gain=Math.max(0,fNom-contrib);
+  const tax=f.taxFree?0:gain*(n(f.taxRate)/100);
+  const fNomNet=fNom-tax;
+  fNomGrossTotal+=fNom;fNomNetTotal+=fNomNet;fundTaxTotal+=tax;
+  if(f.include){fNomAccessibleGross+=fNom;fNomAccessibleNet+=fNomNet}
+  fundBreak.push({name:f.name,fNom,fNomNet,tax,include:f.include});
+ });
+
+ let propertyEquityNomTotal=0,saleGrossTotal=0,saleNetTotal=0,rentGrossTotal=0,rentNetTotal=0,propTaxTotal=0;
+ const propBreak=[];
+ state.properties.forEach(p=>{
+  const propNom=n(p.value)*Math.pow(1+n(p.growth)/100,years);
+  const mortgageBal=p.mortgage&&p.mortgage.enabled?mortgageBalanceAtRetirement(p,years):0;
+  const equityNom=p.strategy==='none'||p.strategy==='rent'?Math.max(0,propNom-mortgageBal):0;
+  let saleNom=0,saleTax=0,rentNom=0,rentTax=0,rentBeforeTax=0;
+  if(p.strategy==='sell'){
+   const gain=Math.max(0,propNom-n(p.value));
+   saleTax=gain*(n(p.saleTax)/100);
+   saleNom=Math.max(0,propNom*(1-n(p.sellingCost)/100)-mortgageBal-saleTax);
+  }
+  if(p.strategy==='rent'){
+   const gross=n(p.rent.today)*Math.pow(1+n(p.rent.growth)/100,years)*(n(p.rent.occupancy)/100);
+   const expMonthly=n(p.rent.expenses)*Math.pow(1+infl,years)/12;
+   rentBeforeTax=Math.max(0,gross-expMonthly);
+   rentTax=rentBeforeTax*(n(p.rent.taxRate)/100);
+   rentNom=Math.max(0,rentBeforeTax-rentTax);
+  }
+  propertyEquityNomTotal+=equityNom;
+  saleGrossTotal+=saleNom+saleTax;saleNetTotal+=saleNom;
+  rentGrossTotal+=rentBeforeTax;rentNetTotal+=rentNom;
+  propTaxTotal+=saleTax+rentTax;
+  propBreak.push({name:p.name,strategy:p.strategy,equityNom,saleNom,rentNomNet:rentNom,mortgageBal,propNom});
+ });
+
+ const financialNom=pNom+fNomGrossTotal;
+ const financialNomNet=pNomNet+fNomNetTotal;
+ const accessibleFinancialNom=pNom+fNomAccessibleGross;
+ const accessibleFinancialNomNet=pNomNet+fNomAccessibleNet;
+ const accessibleNom=accessibleFinancialNom+saleGrossTotal;
+ const accessibleNomNet=accessibleFinancialNomNet+saleNetTotal;
+ const totalAssetsNom=financialNom+propertyEquityNomTotal+(state.properties.some(p=>p.strategy==='sell')?saleGrossTotal:0);
+ const totalAssetsNomNet=financialNomNet+propertyEquityNomTotal+(state.properties.some(p=>p.strategy==='sell')?saleNetTotal:0);
+ const incomeNom=accessibleNom*(n(state.basic.withdrawal)/100)/12+rentGrossTotal;
+ const incomeNomNet=accessibleNomNet*(n(state.basic.withdrawal)/100)/12+rentNetTotal;
+ const taxTotal=portfolioTax+fundTaxTotal+propTaxTotal;
+
+ return{years,factor,grossRate,pRate,pNom,pNomNet,portfolioTax,
+  fNomGrossTotal,fNomNetTotal,fundTaxTotal,fundBreak,
+  financialNom,financialNomNet,accessibleFinancialNom,accessibleNomNet,accessibleNom,
+  propertyEquityNomTotal,saleNomTotal:saleNetTotal,rentNomTotal:rentNetTotal,propTaxTotal,propBreak,
+  totalAssetsNom,totalAssetsNomNet,incomeNom,incomeNomNet,taxTotal,
+  totalAssetsReal:totalAssetsNomNet/factor,incomeReal:incomeNomNet/factor,
+  financialReal:financialNom/factor,accessibleReal:accessibleNomNet/factor,
+  propertyEquityReal:propertyEquityNomTotal/factor};
+}
+function valueForGoal(m){return state.goal.type==='income'?m.incomeReal:m.accessibleReal}
+function solveGoal(){
+ const target=n(state.goal.amount),solve=state.goal.solveFor;if(target<=0)return null;
+ let lo,hi;
+ if(solve==='monthly'){lo=0;hi=100000}else if(solve==='age'){lo=Math.max(n(state.basic.currentAge)+1,31);hi=90}else{lo=-.02;hi=.30}
+ const test=x=>solve==='monthly'?valueForGoal(model({portfolioMonthly:x})):solve==='age'?valueForGoal(model({retirementAge:x})):valueForGoal(model({portfolioReturn:x}));
+ if(test(hi)<target)return{ok:false};
+ for(let i=0;i<75;i++){const mid=(lo+hi)/2;if(test(mid)>=target)hi=mid;else lo=mid}
+ return{ok:true,solve,result:solve==='age'?Math.ceil(hi):solve==='return'?hi*100:hi};
+}
+
+/* ---------- Charts ---------- */
+function drawCapitalChart(base){
+ const svg=$('capitalChart'),W=720,H=250,pad=32,steps=Math.max(2,Math.ceil(base.years));
+ let nominal=[],real=[];
+ for(let i=0;i<=steps;i++){const age=n(state.basic.currentAge)+i,m=model({retirementAge:age});nominal.push(m.totalAssetsNom);real.push(m.totalAssetsReal)}
+ const max=Math.max(...nominal,...real,1)*1.08,x=i=>pad+i*(W-2*pad)/steps,y=v=>H-pad-v*(H-2*pad)/max;
+ const path=a=>a.map((v,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+y(v).toFixed(1)).join(' ');
+ let s='';
+ for(let i=0;i<4;i++){const yy=pad+i*(H-2*pad)/3,val=max*(3-i)/3;s+=`<line x1="${pad}" y1="${yy}" x2="${W-pad}" y2="${yy}" stroke="#e5ebf2"/><text x="${W-pad}" y="${yy-4}" text-anchor="end" font-size="10" fill="#8190a5">${money(val).replace('‏','').replace('₪','')}</text>`}
+ s+=`<path d="${path(nominal)}" fill="none" stroke="#2563eb" stroke-width="3"/><path d="${path(real)}" fill="none" stroke="#0f9f8f" stroke-width="3"/><text x="${pad}" y="${H-5}" font-size="10" fill="#8190a5">${n(state.basic.currentAge)}</text><text x="${W-pad}" y="${H-5}" text-anchor="end" font-size="10" fill="#8190a5">${n(state.basic.retirementAge)}</text>`;
+ svg.innerHTML=s;
+}
+function polar(cx,cy,r,a){const x=cx+r*Math.cos(a),y=cy+r*Math.sin(a);return[x,y]}
+function drawAllocationChart(){
+ const total=state.assets.reduce((s,x)=>s+x.value,0),data=state.assets.filter(x=>x.value>0),svg=$('allocationChart');let start=-Math.PI/2,s='';
+ if(!total){svg.innerHTML='<text x="210" y="125" text-anchor="middle" fill="#65748b">לא הוזנו נכסים</text>';$('allocationLegend').innerHTML='';return}
+ data.forEach((d,i)=>{const angle=d.value/total*Math.PI*2,end=start+angle,[x1,y1]=polar(155,120,82,start),[x2,y2]=polar(155,120,82,end),large=angle>Math.PI?1:0;s+=`<path d="M155 120 L${x1} ${y1} A82 82 0 ${large} 1 ${x2} ${y2} Z" fill="${COLORS[i%COLORS.length]}" stroke="#fff" stroke-width="2"/>`;start=end});
+ s+=`<circle cx="155" cy="120" r="47" fill="#fff"/><text x="155" y="115" text-anchor="middle" font-size="12" fill="#65748b">שווי תיק</text><text x="155" y="139" text-anchor="middle" font-size="18" font-weight="800" fill="#172b4d">${money(total)}</text>`;
+ svg.innerHTML=s;
+ $('allocationLegend').innerHTML=data.map((d,i)=>`<span><i style="background:${COLORS[i%COLORS.length]}"></i>${d.name} ${(d.value/total*100).toFixed(0)}%</span>`).join('');
+}
+
+/* ---------- Main calculate ---------- */
+function computeWarnings(m){
+ const w=[];
+ if(n(state.basic.retirementAge)<=n(state.basic.currentAge))w.push('גיל הפרישה נמוך או שווה לגיל הנוכחי — לא נותרה תקופת צבירה.');
+ const wd=n(state.basic.withdrawal);
+ if(wd<=0)w.push('שיעור המשיכה השנתי הוא 0% או שלילי — לא תתקבל קצבה מההון.');
+ else if(wd>15)w.push(`שיעור המשיכה השנתי (${wd}%) גבוה משמעותית מהמקובל (כלל אצבע נפוץ: 3%–5%) — עלול לרוקן את ההון מוקדם מהצפוי.`);
+ const infl=n(state.basic.inflation);
+ if(infl<0)w.push('האינפלציה השנתית שהוזנה שלילית — ודאו שזה מכוון.');
+ else if(infl>10)w.push(`האינפלציה השנתית שהוזנה (${infl}%) גבוהה במיוחד — בדקו את הערך.`);
+ if(m.grossRate-n(state.basic.costDrag)/100<0)w.push('התשואה נטו מדמי ניהול שלילית — הצבירה תישחק עם הזמן במקום לגדול.');
+ state.properties.forEach(p=>{
+  if(p.mortgage&&p.mortgage.enabled&&p.mortgage.principal>0){
+   const bal=mortgageBalanceAtRetirement(p,m.years);
+   const propNom=n(p.value)*Math.pow(1+n(p.growth)/100,m.years);
+   if(bal>propNom)w.push(`בנכס "${p.name}" יתרת המשכנתא הצפויה בפרישה גבוהה משווי הנכס הצפוי — הון שלילי בנכס.`);
+  }
+ });
+ return w;
+}
+function calculate(){
+ const m=model(),target=n(state.goal.amount),actual=valueForGoal(m),ratio=target?actual/target:0;
+ $('totalAssetsNominal').textContent=money(m.totalAssetsNom);$('totalAssetsReal').textContent=money(m.totalAssetsReal);
+ $('incomeNominal').textContent=money(m.incomeNom);$('incomeReal').textContent=money(m.incomeReal);
+ $('financialNominal').textContent=money(m.financialNom);$('taxTotal').textContent=money(m.taxTotal);
+ $('returnKpi').textContent=pctFmt(m.grossRate*100);$('propertyReal').textContent=money(m.propertyEquityReal);
+ $('summaryLine').textContent=`תחזית ל-${m.years} שנים. התשואה המשוקללת בתיק היא ${pctFmt(m.grossRate*100)}. מס משוער כולל: ${money(m.taxTotal)}.`;
+ $('goalLabel').textContent=state.goal.type==='income'?'קצבה חודשית ריאלית נטו מבוקשת':'הון זמין ריאלי נטו נדרש';$('goalDisplay').textContent=money(target);
+ $('goalMeter').style.width=Math.min(100,ratio*100)+'%';$('goalPercent').textContent=`התחזית מכסה ${(ratio*100).toFixed(0)}% מהיעד`;
+ $('statusPill').textContent=ratio>=1?'היעד מושג':'נדרש שיפור';$('statusPill').style.background=ratio>=1?'#e8f7f2':'#fff3df';$('statusPill').style.color=ratio>=1?'#087c6d':'#9a5b00';
+ $('insight').className='insight '+(ratio>=1?'':'warning');$('insight').textContent=ratio>=1?`לפי ההנחות, היעד מושג עם מרווח של ${money(actual-target)}.`:`חסר ${money(target-actual)} ביחס ליעד. בלשונית "יעד" ניתן לחשב את השינוי הנדרש.`;
+
+ const rows=[];
+ rows.push(`<div class="row"><span>תיק השקעות — נומינלי (נטו ממס ${money(m.portfolioTax)})</span><strong>${money(m.pNomNet)}</strong></div>`);
+ m.fundBreak.forEach(f=>rows.push(`<div class="row"><span>${f.name} — נומינלי${f.include?'':' (לא נכלל)'} ${f.tax>0?'<span class="pill-tax">מס '+money(f.tax)+'</span>':''}</span><strong>${money(f.fNomNet)}</strong></div>`));
+ m.propBreak.forEach(p=>{
+  if(p.strategy==='sell')rows.push(`<div class="row"><span>${p.name} — תמורת מכירה נטו</span><strong>${money(p.saleNom)}</strong></div>`);
+  else{
+   rows.push(`<div class="row"><span>${p.name} — שווי נדל״ן נקי</span><strong>${money(p.equityNom)}</strong></div>`);
+   if(p.strategy==='rent')rows.push(`<div class="row"><span>${p.name} — שכירות חודשית נטו (ריאלי)</span><strong>${money(p.rentNomNet/m.factor)}</strong></div>`);
+  }
+ });
+ $('breakdownRows').innerHTML=rows.join('');
+
+ const sol=solveGoal();
+ if(!sol)$('solveResult').textContent='—';
+ else if(!sol.ok){$('solveResult').textContent='לא נמצא פתרון בטווח';$('solveExplanation').textContent='נדרש לשנות יותר ממשתנה אחד.'}
+ else if(sol.solve==='monthly'){$('solveResult').textContent=money(sol.result)+' לחודש';$('solveExplanation').textContent='ההפקדה החודשית הנדרשת לתיק.'}
+ else if(sol.solve==='age'){$('solveResult').textContent='גיל '+sol.result;$('solveExplanation').textContent='גיל הפרישה המוקדם ביותר להשגת היעד.'}
+ else{$('solveResult').textContent=pctFmt(sol.result)+' לשנה';$('solveExplanation').textContent='התשואה המשוקללת הנדרשת לפני עלויות.'}
+ drawCapitalChart(m);drawAllocationChart();renderAllSchedules();
+
+ const warnings=computeWarnings(m),wb=$('warningsBox');
+ if(warnings.length){wb.classList.remove('hide');wb.innerHTML='<strong>שימו לב:</strong><ul>'+warnings.map(x=>`<li>${x}</li>`).join('')+'</ul>'}
+ else{wb.classList.add('hide');wb.innerHTML=''}
+}
+
+/* ---------- Tabs ---------- */
+document.querySelectorAll('.tab').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));btn.classList.add('active');$(btn.dataset.tab).classList.add('active')});
+
+/* ---------- Reset ---------- */
+$('reset').onclick=()=>{
+ if(!confirm('לאפס את כל הנתונים לברירת המחדל? הפעולה תמחק את הנתונים השמורים.'))return;
+ state=defaultState();saveState();fullRender();
+};
+$('calculate').onclick=calculate;
+$('printBtn').onclick=()=>window.print();
+
+/* ---------- Full render / init ---------- */
+function fullRender(){
+ bindSimple(['currentAge','retirementAge','portfolioMonthly','inflation','withdrawal','costDrag'],()=>state.basic);
+ bindSimple(['compoundingPerYear','contribTiming','defaultRentTax','defaultSaleTax','roundDecimals'],()=>state.advanced);
+ bindGoalField('goalType','type');bindGoalField('goalAmount','amount');bindGoalField('solveFor','solveFor');
+ renderAssets();renderFunds();renderProperties();
+ tipify();
+ calculate();
+}
+
+state=loadState();
+// migrate: ensure goal defaults exist
+if(!state.goal)state.goal={type:'income',amount:10000,solveFor:'monthly'};
+if(!state.advanced)state.advanced={compoundingPerYear:12,contribTiming:'end',defaultRentTax:10,defaultSaleTax:25,roundDecimals:2};
+if(state.portfolioTaxRate===undefined)state.portfolioTaxRate=25;
+fullRender();
+</script>
+</body></html>
