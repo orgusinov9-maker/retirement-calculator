@@ -15,7 +15,7 @@
 .tabs{display:flex;gap:6px;background:#eef3f8;padding:5px;border-radius:13px;margin-bottom:16px;overflow:auto}.tab{flex:1;min-width:58px;border:0;background:transparent;padding:9px 4px;border-radius:9px;color:var(--muted);cursor:pointer;font-weight:700;font-size:12.5px;white-space:nowrap}.tab.active{background:#fff;color:var(--navy);box-shadow:0 2px 8px rgba(16,42,67,.09)}
 .section{display:none}.section.active{display:block}.section h3{font-size:17px;margin:4px 0 13px}.field{margin-bottom:11px}.field label{display:flex;justify-content:flex-start;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#42526a;margin-bottom:5px}.field small{font-weight:400;color:var(--muted)}.input-wrap{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden}.input-wrap input,.input-wrap select{width:100%;border:0;outline:0;padding:9px 10px;color:var(--text);background:#fff}.suffix{padding:0 9px;color:var(--muted);font-size:12px;white-space:nowrap}.subhead{display:flex;align-items:center;gap:8px;border-top:1px solid var(--line);padding-top:14px;margin:16px 0 11px;font-weight:800}.dot{width:9px;height:9px;border-radius:50%;background:var(--teal)}
 .actions{display:flex;gap:8px;position:sticky;bottom:-17px;background:#fff;padding:13px 0 2px}.btn{border:0;border-radius:11px;padding:11px 14px;cursor:pointer;font-weight:800}.primary{background:var(--blue);color:#fff;flex:1}.secondary{background:#eef3f8;color:var(--navy)}.danger{background:#fdeceb;color:var(--red)}.btn.small{padding:7px 10px;font-size:12px;border-radius:9px}
-.asset-table{width:100%;border-collapse:collapse;font-size:12px}.asset-table th{color:var(--muted);text-align:right;padding:7px 4px;border-bottom:1px solid var(--line)}.asset-table td{padding:5px 3px}.asset-table input{width:100%;min-width:56px;border:1px solid var(--line);border-radius:8px;padding:7px}.asset-table .asset-name{min-width:105px}.asset-total{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.mini{background:#f4f8fc;border:1px solid var(--line);border-radius:11px;padding:9px}.mini span{font-size:11px;color:var(--muted);display:block}.mini strong{font-size:17px}
+.asset-total{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.mini{background:#f4f8fc;border:1px solid var(--line);border-radius:11px;padding:9px}.mini span{font-size:11px;color:var(--muted);display:block}.mini strong{font-size:17px}
 .headline{display:flex;justify-content:space-between;gap:18px;margin-bottom:18px}.headline h2{margin:0;font-size:24px}.headline p{margin:4px 0 0;color:var(--muted)}.status{padding:8px 11px;border-radius:999px;background:#e8f7f2;color:#087c6d;font-weight:800;font-size:13px;white-space:nowrap;height:max-content}
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.kpi{border:1px solid var(--line);border-radius:16px;padding:14px;background:linear-gradient(180deg,#fff,#fbfdff)}.kpi.feature{background:linear-gradient(135deg,#102a43,#184b7d);color:#fff;border:0}.kpi .label{font-size:12px;color:var(--muted);min-height:34px;display:flex;align-items:flex-start;gap:5px}.kpi.feature .label,.kpi.feature .sub{color:#dce8f5}.kpi .value{font-size:23px;font-weight:900;margin-top:3px;letter-spacing:-.4px}.kpi .sub{font-size:11px;color:var(--muted);margin-top:4px}.accent{color:var(--teal)}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:15px}.box{border:1px solid var(--line);border-radius:17px;padding:16px;background:#fff}.box h3{margin:0 0 11px;font-size:15px;display:flex;align-items:center;gap:6px}.chart{width:100%;position:relative}.chart svg{overflow:visible;display:block}#capitalChart{aspect-ratio:720/250}#allocationChart{aspect-ratio:420/250}.legend{display:flex;flex-wrap:wrap;gap:13px;font-size:12px;color:var(--muted);margin-top:7px}.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-left:5px}
@@ -47,7 +47,7 @@ details.sched-more summary:focus{outline:2px solid var(--blue)}
  .sched-wrap{max-height:none;overflow:visible}
 }
 @media(max-width:1020px){.layout{grid-template-columns:1fr}.panel{position:relative;max-height:none}.kpis{grid-template-columns:repeat(2,1fr)}.hero-grid{grid-template-columns:1fr}}
-@media(max-width:650px){.wrap{padding:0 11px}.hero{padding-top:28px}.shell{margin-top:-35px}.results,.panel{border-radius:15px}.kpis{grid-template-columns:1fr 1fr;gap:8px}.kpi{padding:11px}.kpi .value{font-size:19px}.grid2{grid-template-columns:1fr}.headline{display:block}.status{display:inline-block;margin-top:9px}.asset-table{font-size:11px}.grid3{grid-template-columns:1fr}}
+@media(max-width:650px){.wrap{padding:0 11px}.hero{padding-top:28px}.shell{margin-top:-35px}.results,.panel{border-radius:15px}.kpis{grid-template-columns:1fr 1fr;gap:8px}.kpi{padding:11px}.kpi .value{font-size:19px}.grid2{grid-template-columns:1fr}.headline{display:block}.status{display:inline-block;margin-top:9px}.grid3{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -79,17 +79,13 @@ details.sched-more summary:focus{outline:2px solid var(--blue)}
 </section>
 
 <section class="section" id="allocation">
-<h3>הקצאת תיק ההשקעות</h3>
-<table class="asset-table">
-<thead><tr><th>אפיק</th><th>שווי ₪</th><th>תשואה %</th><th>משקל</th><th></th></tr></thead>
-<tbody id="assetRows"></tbody>
-</table>
-<button class="btn secondary" id="addAsset" style="width:100%;margin-top:8px">+ הוספת אפיק</button>
+<h3>הקצאת תיק ההשקעות <span class="info" data-tip-key="allocationGeneral">i</span></h3>
+<div id="assetCards"></div>
+<button class="btn secondary" id="addAsset" style="width:100%;margin-top:4px">+ הוספת אפיק</button>
 <div class="asset-total">
 <div class="mini"><span>שווי התיק</span><strong id="allocationTotal">—</strong></div>
 <div class="mini"><span>תשואה משוקללת</span><strong id="weightedReturn">—</strong></div>
 </div>
-<div class="field" style="margin-top:12px"><label>מס רווח הון בפדיון <span class="info" data-tip-key="portfolioTaxRate">i</span></label><div class="input-wrap"><input id="portfolioTaxRate" type="number" step="0.5"><span class="suffix">%</span></div></div>
 </section>
 
 <section class="section" id="funds">
@@ -116,6 +112,7 @@ details.sched-more summary:focus{outline:2px solid var(--blue)}
 <h3>מתקדם — לשימוש מפתחים <span class="info" data-tip-key="advancedGeneral">i</span></h3>
 <div class="field"><label>תדירות ריבית דריבית <span class="info" data-tip-key="compoundingPerYear">i</span></label><div class="input-wrap"><select id="compoundingPerYear"><option value="12">חודשית (12)</option><option value="4">רבעונית (4)</option><option value="1">שנתית (1)</option></select></div></div>
 <div class="field"><label>מועד הפקדה בחודש <span class="info" data-tip-key="contribTiming">i</span></label><div class="input-wrap"><select id="contribTiming"><option value="end">בסוף החודש</option><option value="start">בתחילת החודש</option></select></div></div>
+<div class="field"><label>ברירת מחדל: מס רווח הון בתיק <span class="info" data-tip-key="defaultAssetTax">i</span></label><div class="input-wrap"><input id="defaultAssetTax" type="number" step="0.5"><span class="suffix">%</span></div></div>
 <div class="field"><label>ברירת מחדל: מס שכירות <span class="info" data-tip-key="defaultRentTax">i</span></label><div class="input-wrap"><input id="defaultRentTax" type="number" step="0.5"><span class="suffix">%</span></div></div>
 <div class="field"><label>ברירת מחדל: מס שבח במכירה <span class="info" data-tip-key="defaultSaleTax">i</span></label><div class="input-wrap"><input id="defaultSaleTax" type="number" step="0.5"><span class="suffix">%</span></div></div>
 <div class="field"><label>עיגול תוצאות (ספרות אחרי הנקודה) <span class="info" data-tip-key="roundDecimals">i</span></label><div class="input-wrap"><input id="roundDecimals" type="number" min="0" max="4"></div></div>
@@ -156,7 +153,7 @@ details.sched-more summary:focus{outline:2px solid var(--blue)}
 
 <div class="box" style="margin-top:14px"><h3>לוחות סילוקין למשכנתאות<span class="info" data-tip-key="mortgageSchedules">i</span></h3><div id="scheduleArea" style="font-size:13px;color:var(--muted)">אין נכסים עם משכנתא פעילה. ניתן להוסיף משכנתא בלשונית "נדל״ן".</div></div>
 
-<div class="assumption">החישוב הוא כלי תכנון בלבד ואינו ייעוץ השקעות, מס, משכנתאות או פנסיה. המודל מניח תשואות, אינפלציה ושיעורי מס קבועים לאורך התקופה, והפקדות/תשלומים אחידים מדי חודש. שיעורי המס הם קירוב בלבד ואינם מהווים חוות דעת מיסויית.</div>
+<div class="assumption">החישוב הוא כלי תכנון בלבד ואינו ייעוץ השקעות, מס, משכנתאות או פנסיה. המודל מניח תשואות, אינפלציה ושיעורי מס קבועים לאורך התקופה, והפקדות/תשלומים אחידים מדי חודש. כל אפיק השקעה בתיק מצטבר ומחויב במס בנפרד לפי התשואה והשיעור שהוגדרו לו, וההפקדה החודשית לתיק מתחלקת בין האפיקים לפי משקלם היחסי הנוכחי. שיעורי המס הם קירוב בלבד ואינם מהווים חוות דעת מיסויית.</div>
 </section>
 </div></main>
 
@@ -173,7 +170,11 @@ const TIPS={
  inflation:'שיעור עליית המחירים השנתי הצפוי. משמש להמרת סכומים נומינליים (עתידיים) לערכים ריאליים (כוח קנייה של היום).',
  withdrawal:'אחוז מההון הזמין שנמשך מדי שנה בפרישה (כלל אצבע נפוץ: 4%). קובע את הקצבה החודשית מהתיק והקרנות.',
  costDrag:'דמי ניהול, עמלות ומיסוי שוטף שמקטינים את התשואה נטו כל שנה, לפני חישוב הצבירה בפועל.',
- portfolioTaxRate:'שיעור מס רווחי הון שיחול על הרווח הנצבר בתיק בעת המשיכה/הפדיון (בישראל כיום כ-25% על רווח ריאלי).',
+ allocationGeneral:'כל אפיק בתיק מצטבר לפי התשואה והמס שלו בנפרד — לא לפי תשואת ממוצע אחת לכל התיק. ההפקדה החודשית לתיק מתחלקת בין האפיקים לפי משקלם היחסי הנוכחי. ה"תשואה המשוקללת" המוצגת היא לצורך התמצאות בלבד.',
+ assetValue:'השווי הנוכחי של אפיק ההשקעה הזה. קובע גם את משקלו היחסי מתוך כל התיק ואת חלקו בהפקדה החודשית.',
+ assetReturn:'תשואה שנתית ברוטו צפויה לאפיק זה, לפני עלויות ולפני מס. כל אפיק צובר בנפרד לפי התשואה שהוגדרה לו.',
+ assetTaxRate:'שיעור מס רווח הון שיחול על הרווח הנצבר באפיק זה בעת המשיכה/הפדיון. ניתן להגדיר שיעור שונה לכל אפיק (למשל אפיק פטור ממס לעומת אפיק חייב).',
+ defaultAssetTax:'שיעור מס רווח הון שישמש כברירת מחדל בעת הוספת אפיק חדש לתיק ההשקעות.',
  fundsGeneral:'ניתן להוסיף מספר בלתי מוגבל של קרנות (השתלמות, גמל להשקעה, IRA וכו׳). לכל קרן פרמטרים, מיסוי והכללה בפרישה משלה.',
  fundInitial:'היתרה הצבורה כיום בקרן זו.',
  fundMonthly:'הפקדה חודשית קבועה לקרן זו.',
@@ -239,16 +240,15 @@ document.addEventListener('focusin',e=>{const icon=e.target.closest('.info');if(
 function defaultState(){
  return {
   basic:{currentAge:30,retirementAge:67,portfolioMonthly:1000,inflation:2.5,withdrawal:4,costDrag:0},
-  advanced:{compoundingPerYear:12,contribTiming:'end',defaultRentTax:10,defaultSaleTax:25,roundDecimals:2},
-  portfolioTaxRate:25,
+  advanced:{compoundingPerYear:12,contribTiming:'end',defaultRentTax:10,defaultSaleTax:25,defaultAssetTax:25,roundDecimals:2},
   assets:[
-   {id:uid(),name:'קרן סל מניות גלובלית',value:50000,ret:8.5},
-   {id:uid(),name:'מניות ישראל',value:10000,ret:8},
-   {id:uid(),name:'מניות ארה״ב',value:20000,ret:10},
-   {id:uid(),name:'אג״ח קונצרני',value:10000,ret:5},
-   {id:uid(),name:'אג״ח ממשלתי',value:0,ret:4},
-   {id:uid(),name:'סחורות',value:0,ret:4},
-   {id:uid(),name:'מזומן',value:10000,ret:2.5}
+   {id:uid(),name:'קרן סל מניות גלובלית',value:50000,ret:8.5,taxRate:25},
+   {id:uid(),name:'מניות ישראל',value:10000,ret:8,taxRate:25},
+   {id:uid(),name:'מניות ארה״ב',value:20000,ret:10,taxRate:25},
+   {id:uid(),name:'אג״ח קונצרני',value:10000,ret:5,taxRate:25},
+   {id:uid(),name:'אג״ח ממשלתי',value:0,ret:4,taxRate:25},
+   {id:uid(),name:'סחורות',value:0,ret:4,taxRate:25},
+   {id:uid(),name:'מזומן',value:10000,ret:2.5,taxRate:25}
   ],
   funds:[
    {id:uid(),name:'קרן השתלמות',initial:50000,monthly:500,ret:5,include:true,taxFree:true,taxRate:25}
@@ -322,34 +322,38 @@ function bindGoalField(elId,key){
 
 /* ---------- Assets (portfolio allocation) ---------- */
 function renderAssets(){
- const tbody=$('assetRows');tbody.innerHTML='';
- if(!state.assets.length){tbody.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:12px 4px">לא נותרו אפיקים בתיק. לחצו על "+ הוספת אפיק" כדי להתחיל.</td></tr>'}
+ const wrap=$('assetCards');wrap.innerHTML='';
+ if(!state.assets.length){wrap.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:14px">לא נותרו אפיקים בתיק. לחצו על "+ הוספת אפיק" כדי להתחיל.</div>'}
+ const total=state.assets.reduce((s,x)=>s+x.value,0);
  state.assets.forEach(a=>{
-  const tr=document.createElement('tr');
-  tr.innerHTML=`<td><input class="asset-name" value="${a.name.replaceAll('"','&quot;')}"></td>
-  <td><input class="asset-value" type="number" value="${a.value}"></td>
-  <td><input class="asset-return" type="number" step="0.1" value="${a.ret}"></td>
-  <td class="asset-weight">0%</td>
-  <td><button class="btn danger small" data-del="${a.id}">✕</button></td>`;
-  tbody.appendChild(tr);
-  tr.querySelector('.asset-name').addEventListener('input',e=>{a.name=e.target.value;saveState();calculate()});
-  tr.querySelector('.asset-value').addEventListener('input',e=>{a.value=n(e.target.value);saveState();calculate()});
-  tr.querySelector('.asset-return').addEventListener('input',e=>{a.ret=n(e.target.value);saveState();calculate()});
-  tr.querySelector('[data-del]').addEventListener('click',()=>{state.assets=state.assets.filter(x=>x.id!==a.id);saveState();renderAssets();calculate()});
+  const card=document.createElement('div');card.className='card';card.dataset.id=a.id;
+  const weightPct=total?(a.value/total*100):0;
+  card.innerHTML=`<div class="card-head"><input class="name" value="${a.name.replaceAll('"','&quot;')}"><button class="btn danger small" data-del="${a.id}">✕</button></div>
+  <div class="grid3">
+   <div class="field"><label>שווי <span class="info" data-tip-key="assetValue">i</span></label><div class="input-wrap"><input type="number" class="a-value" value="${a.value}"><span class="suffix">₪</span></div></div>
+   <div class="field"><label>תשואה שנתית <span class="info" data-tip-key="assetReturn">i</span></label><div class="input-wrap"><input type="number" step="0.1" class="a-return" value="${a.ret}"><span class="suffix">%</span></div></div>
+   <div class="field"><label>מס רווח הון <span class="info" data-tip-key="assetTaxRate">i</span></label><div class="input-wrap"><input type="number" step="0.5" class="a-taxrate" value="${a.taxRate}"><span class="suffix">%</span></div></div>
+  </div>
+  <div style="font-size:11px;color:var(--muted)">משקל בתיק: <strong class="a-weight">${weightPct.toFixed(1)}%</strong></div>`;
+  wrap.appendChild(card);
+  card.querySelector('.name').addEventListener('input',e=>{a.name=e.target.value;saveState();calculate()});
+  card.querySelector('.a-value').addEventListener('input',e=>{a.value=n(e.target.value);saveState();calculate()});
+  card.querySelector('.a-return').addEventListener('input',e=>{a.ret=n(e.target.value);saveState();calculate()});
+  card.querySelector('.a-taxrate').addEventListener('input',e=>{a.taxRate=n(e.target.value);saveState();calculate()});
+  card.querySelector('[data-del]').addEventListener('click',()=>{state.assets=state.assets.filter(x=>x.id!==a.id);saveState();renderAssets();calculate()});
  });
- $('portfolioTaxRate').value=state.portfolioTaxRate;
+ tipify();
 }
-$('addAsset').onclick=()=>{state.assets.push({id:uid(),name:'אפיק חדש',value:0,ret:0});saveState();renderAssets();calculate()};
-$('portfolioTaxRate').addEventListener('input',e=>{state.portfolioTaxRate=n(e.target.value);saveState();calculate()});
+$('addAsset').onclick=()=>{state.assets.push({id:uid(),name:'אפיק חדש',value:0,ret:0,taxRate:n(state.advanced.defaultAssetTax,25)});saveState();renderAssets();calculate()};
 
 function assetData(){
  const total=state.assets.reduce((s,x)=>s+x.value,0);
  const weighted=total?state.assets.reduce((s,x)=>s+x.value*(x.ret/100),0)/total:0;
- document.querySelectorAll('#assetRows tr').forEach((tr,i)=>{
-  const cell=tr.querySelector('.asset-weight');
-  if(!cell)return;
-  const val=state.assets[i]?state.assets[i].value:0;
-  cell.textContent=total?`${(val/total*100).toFixed(1)}%`:'0%';
+ document.querySelectorAll('#assetCards .card').forEach(card=>{
+  const a=state.assets.find(x=>x.id===card.dataset.id);
+  const cell=card.querySelector('.a-weight');
+  if(!a||!cell)return;
+  cell.textContent=total?`${(a.value/total*100).toFixed(1)}%`:'0%';
  });
  $('allocationTotal').textContent=money(total);$('weightedReturn').textContent=pctFmt(weighted*100);
  return{total,weighted};
@@ -523,12 +527,24 @@ function model(overrides={}){
  const {total:assetsTotal,weighted}=assetData();
  const currentAge=overrides.currentAge??n(state.basic.currentAge),retirementAge=overrides.retirementAge??n(state.basic.retirementAge);
  const years=Math.max(0,retirementAge-currentAge),infl=n(state.basic.inflation)/100,factor=Math.pow(1+infl,years);
- const grossRate=overrides.portfolioReturn??weighted,pRate=grossRate-n(state.basic.costDrag)/100;
+ const costDrag=n(state.basic.costDrag)/100;
+ const returnShift=overrides.portfolioReturn!==undefined?overrides.portfolioReturn-weighted:0;
  const pMonthly=overrides.portfolioMonthly??n(state.basic.portfolioMonthly);
- const pNom=futureValueWithComp(assetsTotal,pMonthly,pRate,years);
- const portfolioContrib=assetsTotal+pMonthly*Math.round(years*12);
- const portfolioGain=Math.max(0,pNom-portfolioContrib);
- const portfolioTax=portfolioGain*(n(state.portfolioTaxRate)/100);
+ const months=Math.round(years*12);
+ let pNom=0,portfolioTax=0;
+ const assetBreak=[];
+ state.assets.forEach(a=>{
+  const w=assetsTotal?a.value/assetsTotal:0;
+  const aMonthly=pMonthly*w;
+  const aRate=n(a.ret)/100+returnShift-costDrag;
+  const aNom=futureValueWithComp(a.value,aMonthly,aRate,years);
+  const aContrib=a.value+aMonthly*months;
+  const aGain=Math.max(0,aNom-aContrib);
+  const aTax=aGain*(n(a.taxRate)/100);
+  pNom+=aNom;portfolioTax+=aTax;
+  assetBreak.push({name:a.name,nom:aNom,net:aNom-aTax,tax:aTax});
+ });
+ const grossRate=weighted+returnShift;
  const pNomNet=pNom-portfolioTax;
 
  let fNomGrossTotal=0,fNomNetTotal=0,fNomAccessibleGross=0,fNomAccessibleNet=0,fundTaxTotal=0;
@@ -582,7 +598,7 @@ function model(overrides={}){
  const incomeNomNet=accessibleNomNet*(n(state.basic.withdrawal)/100)/12+rentNetTotal;
  const taxTotal=portfolioTax+fundTaxTotal+propTaxTotal;
 
- return{years,factor,grossRate,pRate,pNom,pNomNet,portfolioTax,
+ return{years,factor,grossRate,pNom,pNomNet,portfolioTax,assetBreak,
   fNomGrossTotal,fNomNetTotal,fundTaxTotal,fundBreak,
   financialNom,financialNomNet,accessibleFinancialNom,accessibleNomNet,accessibleNom,
   propertyEquityNomTotal,saleNomTotal:saleNetTotal,rentNomTotal:rentNetTotal,propTaxTotal,propBreak,
@@ -634,7 +650,10 @@ function computeWarnings(m){
  const infl=n(state.basic.inflation);
  if(infl<0)w.push('האינפלציה השנתית שהוזנה שלילית — ודאו שזה מכוון.');
  else if(infl>10)w.push(`האינפלציה השנתית שהוזנה (${infl}%) גבוהה במיוחד — בדקו את הערך.`);
- if(m.grossRate-n(state.basic.costDrag)/100<0)w.push('התשואה נטו מדמי ניהול שלילית — הצבירה תישחק עם הזמן במקום לגדול.');
+ if(m.grossRate-n(state.basic.costDrag)/100<0)w.push('התשואה המשוקללת נטו מדמי ניהול שלילית — הצבירה תישחק עם הזמן במקום לגדול.');
+ state.assets.forEach(a=>{
+  if(a.value>0&&n(a.ret)/100-n(state.basic.costDrag)/100<0)w.push(`התשואה נטו מדמי ניהול באפיק "${a.name}" שלילית — הוא ישחק את עצמו עם הזמן.`);
+ });
  state.properties.forEach(p=>{
   if(p.mortgage&&p.mortgage.enabled&&p.mortgage.principal>0){
    const bal=mortgageBalanceAtRetirement(p,m.years);
@@ -657,7 +676,7 @@ function calculate(){
  $('insight').className='insight '+(ratio>=1?'':'warning');$('insight').textContent=ratio>=1?`לפי ההנחות, היעד מושג עם מרווח של ${money(actual-target)}.`:`חסר ${money(target-actual)} ביחס ליעד. בלשונית "יעד" ניתן לחשב את השינוי הנדרש.`;
 
  const rows=[];
- rows.push(`<div class="row"><span>תיק השקעות — נומינלי (נטו ממס ${money(m.portfolioTax)})</span><strong>${money(m.pNomNet)}</strong></div>`);
+ m.assetBreak.forEach(a=>rows.push(`<div class="row"><span>${a.name} — נומינלי${a.tax>0?' <span class="pill-tax">מס '+money(a.tax)+'</span>':''}</span><strong>${money(a.net)}</strong></div>`));
  m.fundBreak.forEach(f=>rows.push(`<div class="row"><span>${f.name} — נומינלי${f.include?'':' (לא נכלל)'} ${f.tax>0?'<span class="pill-tax">מס '+money(f.tax)+'</span>':''}</span><strong>${money(f.fNomNet)}</strong></div>`));
  m.propBreak.forEach(p=>{
   if(p.strategy==='sell')rows.push(`<div class="row"><span>${p.name} — תמורת מכירה נטו</span><strong>${money(p.saleNom)}</strong></div>`);
@@ -695,7 +714,7 @@ $('printBtn').onclick=()=>window.print();
 /* ---------- Full render / init ---------- */
 function fullRender(){
  bindSimple(['currentAge','retirementAge','portfolioMonthly','inflation','withdrawal','costDrag'],()=>state.basic);
- bindSimple(['compoundingPerYear','contribTiming','defaultRentTax','defaultSaleTax','roundDecimals'],()=>state.advanced);
+ bindSimple(['compoundingPerYear','contribTiming','defaultRentTax','defaultSaleTax','defaultAssetTax','roundDecimals'],()=>state.advanced);
  bindGoalField('goalType','type');bindGoalField('goalAmount','amount');bindGoalField('solveFor','solveFor');
  renderAssets();renderFunds();renderProperties();
  tipify();
@@ -703,10 +722,12 @@ function fullRender(){
 }
 
 state=loadState();
-// migrate: ensure goal defaults exist
+// migrate: ensure goal/advanced defaults exist, and backfill per-asset tax rate from the old global rate
 if(!state.goal)state.goal={type:'income',amount:10000,solveFor:'monthly'};
-if(!state.advanced)state.advanced={compoundingPerYear:12,contribTiming:'end',defaultRentTax:10,defaultSaleTax:25,roundDecimals:2};
-if(state.portfolioTaxRate===undefined)state.portfolioTaxRate=25;
+if(!state.advanced)state.advanced={compoundingPerYear:12,contribTiming:'end',defaultRentTax:10,defaultSaleTax:25,defaultAssetTax:25,roundDecimals:2};
+if(state.advanced.defaultAssetTax===undefined)state.advanced.defaultAssetTax=state.portfolioTaxRate??25;
+state.assets.forEach(a=>{if(a.taxRate===undefined)a.taxRate=state.portfolioTaxRate??state.advanced.defaultAssetTax??25});
+delete state.portfolioTaxRate;
 fullRender();
 </script>
 </body></html>
