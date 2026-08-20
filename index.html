@@ -65,7 +65,6 @@ details.sched-more summary:focus{outline:2px solid var(--blue)}
 <button class="tab" data-tab="funds">קרנות</button>
 <button class="tab" data-tab="properties">נדל״ן</button>
 <button class="tab" data-tab="goal">יעד</button>
-<button class="tab" data-tab="advanced">מתקדם</button>
 </div>
 
 <section class="section active" id="basic">
@@ -82,6 +81,14 @@ details.sched-more summary:focus{outline:2px solid var(--blue)}
 <h3>הקצאת תיק ההשקעות <span class="info" data-tip-key="allocationGeneral">i</span></h3>
 <div id="assetCards"></div>
 <button class="btn secondary" id="addAsset" style="width:100%;margin-top:4px">+ הוספת אפיק</button>
+<div class="card hide" id="assetPicker" style="margin-top:8px">
+ <div style="font-size:12px;font-weight:800;color:#42526a;margin-bottom:8px">בחרו אפיק אחד או יותר להוספה לתיק:</div>
+ <div id="assetPickerList" style="display:flex;flex-direction:column;gap:7px;max-height:220px;overflow:auto"></div>
+ <div style="display:flex;gap:8px;margin-top:10px">
+  <button class="btn primary small" id="assetPickerConfirm" style="flex:1">הוספת הנבחרים</button>
+  <button class="btn secondary small" id="assetPickerCancel">ביטול</button>
+ </div>
+</div>
 <div class="asset-total">
 <div class="mini"><span>שווי התיק</span><strong id="allocationTotal">—</strong></div>
 <div class="mini"><span>תשואה משוקללת</span><strong id="weightedReturn">—</strong></div>
@@ -106,16 +113,6 @@ details.sched-more summary:focus{outline:2px solid var(--blue)}
 <div class="field"><label>סכום היעד</label><div class="input-wrap"><input id="goalAmount" type="number"><span class="suffix">₪</span></div></div>
 <div class="field"><label>מה לחשב? <span class="info" data-tip-key="solveFor">i</span></label><div class="input-wrap"><select id="solveFor"><option value="monthly">הפקדה חודשית נדרשת</option><option value="age">גיל פרישה נדרש</option><option value="return">תשואה משוקללת נדרשת</option></select></div></div>
 <div class="mini" style="margin-top:12px"><span>התוצאה הנדרשת</span><strong id="solveResult">—</strong><div id="solveExplanation" style="font-size:11px;color:var(--muted);margin-top:5px"></div></div>
-</section>
-
-<section class="section" id="advanced">
-<h3>מתקדם — לשימוש מפתחים <span class="info" data-tip-key="advancedGeneral">i</span></h3>
-<div class="field"><label>תדירות ריבית דריבית <span class="info" data-tip-key="compoundingPerYear">i</span></label><div class="input-wrap"><select id="compoundingPerYear"><option value="12">חודשית (12)</option><option value="4">רבעונית (4)</option><option value="1">שנתית (1)</option></select></div></div>
-<div class="field"><label>מועד הפקדה בחודש <span class="info" data-tip-key="contribTiming">i</span></label><div class="input-wrap"><select id="contribTiming"><option value="end">בסוף החודש</option><option value="start">בתחילת החודש</option></select></div></div>
-<div class="field"><label>ברירת מחדל: מס רווח הון בתיק <span class="info" data-tip-key="defaultAssetTax">i</span></label><div class="input-wrap"><input id="defaultAssetTax" type="number" step="0.5"><span class="suffix">%</span></div></div>
-<div class="field"><label>ברירת מחדל: מס שכירות <span class="info" data-tip-key="defaultRentTax">i</span></label><div class="input-wrap"><input id="defaultRentTax" type="number" step="0.5"><span class="suffix">%</span></div></div>
-<div class="field"><label>ברירת מחדל: מס שבח במכירה <span class="info" data-tip-key="defaultSaleTax">i</span></label><div class="input-wrap"><input id="defaultSaleTax" type="number" step="0.5"><span class="suffix">%</span></div></div>
-<div class="field"><label>עיגול תוצאות (ספרות אחרי הנקודה) <span class="info" data-tip-key="roundDecimals">i</span></label><div class="input-wrap"><input id="roundDecimals" type="number" min="0" max="4"></div></div>
 </section>
 
 <div class="actions"><button class="btn primary" id="calculate">חישוב מחדש</button><button class="btn secondary" id="reset">איפוס לברירת מחדל</button></div>
@@ -239,19 +236,19 @@ document.addEventListener('focusin',e=>{const icon=e.target.closest('.info');if(
 
 function defaultState(){
  return {
-  basic:{currentAge:30,retirementAge:67,portfolioMonthly:1000,inflation:2.5,withdrawal:4,costDrag:0},
+  basic:{currentAge:30,retirementAge:67,portfolioMonthly:1000,inflation:2.5,withdrawal:3,costDrag:0},
   advanced:{compoundingPerYear:12,contribTiming:'end',defaultRentTax:10,defaultSaleTax:25,defaultAssetTax:25,roundDecimals:2},
   assets:[
-   {id:uid(),name:'קרן סל מניות גלובלית',value:50000,ret:8.5,taxRate:25},
-   {id:uid(),name:'מניות ישראל',value:10000,ret:8,taxRate:25},
-   {id:uid(),name:'מניות ארה״ב',value:20000,ret:10,taxRate:25},
-   {id:uid(),name:'אג״ח קונצרני',value:10000,ret:5,taxRate:25},
+   {id:uid(),name:'קרן סל מניות גלובלית',value:0,ret:8.5,taxRate:25},
+   {id:uid(),name:'מניות ישראל',value:0,ret:8,taxRate:25},
+   {id:uid(),name:'מניות ארה״ב',value:0,ret:10,taxRate:25},
+   {id:uid(),name:'אג״ח קונצרני',value:0,ret:5,taxRate:25},
    {id:uid(),name:'אג״ח ממשלתי',value:0,ret:4,taxRate:25},
    {id:uid(),name:'סחורות',value:0,ret:4,taxRate:25},
-   {id:uid(),name:'מזומן',value:10000,ret:2.5,taxRate:25}
+   {id:uid(),name:'מזומן',value:0,ret:2.5,taxRate:25}
   ],
   funds:[
-   {id:uid(),name:'קרן השתלמות',initial:50000,monthly:500,ret:5,include:true,taxFree:true,taxRate:25}
+   {id:uid(),name:'קרן השתלמות',initial:0,monthly:0,ret:5,include:true,taxFree:true,taxRate:25}
   ],
   properties:[
    {id:uid(),name:'דירת מגורים',strategy:'none',value:0,growth:3,sellingCost:3,saleTax:25,
@@ -344,7 +341,36 @@ function renderAssets(){
  });
  tipify();
 }
-$('addAsset').onclick=()=>{state.assets.push({id:uid(),name:'אפיק חדש',value:0,ret:0,taxRate:n(state.advanced.defaultAssetTax,25)});saveState();renderAssets();calculate()};
+const ASSET_PRESETS=[
+ {name:'קרן סל מניות גלובלית',ret:8.5},
+ {name:'מניות ישראל',ret:8},
+ {name:'מניות ארה״ב',ret:10},
+ {name:'מניות שווקים מתעוררים',ret:9},
+ {name:'אג״ח קונצרני',ret:5},
+ {name:'אג״ח ממשלתי',ret:4},
+ {name:'אג״ח קונצרני בחו״ל',ret:4.5},
+ {name:'סחורות',ret:4},
+ {name:'זהב',ret:3.5},
+ {name:'מט״ח / דולר',ret:2},
+ {name:'מזומן / פיקדון',ret:2.5},
+ {name:'נדל״ן מניב (REIT)',ret:6},
+ {name:'קריפטו',ret:15}
+];
+function renderAssetPicker(){
+ $('assetPickerList').innerHTML=ASSET_PRESETS.map((p,i)=>`<label style="display:flex;align-items:center;gap:7px;font-size:13px"><input type="checkbox" class="ap-check" data-i="${i}"> ${p.name} <span style="color:var(--muted);font-size:11px">(תשואה משוערת ${p.ret}%)</span></label>`).join('');
+}
+renderAssetPicker();
+$('addAsset').onclick=()=>{$('assetPicker').classList.toggle('hide')};
+$('assetPickerCancel').onclick=()=>{$('assetPicker').classList.add('hide');$('assetPicker').querySelectorAll('.ap-check').forEach(c=>c.checked=false)};
+$('assetPickerConfirm').onclick=()=>{
+ const checked=[...$('assetPicker').querySelectorAll('.ap-check:checked')];
+ if(checked.length){
+  checked.forEach(c=>{const p=ASSET_PRESETS[+c.dataset.i];state.assets.push({id:uid(),name:p.name,value:0,ret:p.ret,taxRate:n(state.advanced.defaultAssetTax,25)})});
+  saveState();renderAssets();calculate();
+ }
+ $('assetPicker').querySelectorAll('.ap-check').forEach(c=>c.checked=false);
+ $('assetPicker').classList.add('hide');
+};
 
 function assetData(){
  const total=state.assets.reduce((s,x)=>s+x.value,0);
@@ -714,7 +740,6 @@ $('printBtn').onclick=()=>window.print();
 /* ---------- Full render / init ---------- */
 function fullRender(){
  bindSimple(['currentAge','retirementAge','portfolioMonthly','inflation','withdrawal','costDrag'],()=>state.basic);
- bindSimple(['compoundingPerYear','contribTiming','defaultRentTax','defaultSaleTax','defaultAssetTax','roundDecimals'],()=>state.advanced);
  bindGoalField('goalType','type');bindGoalField('goalAmount','amount');bindGoalField('solveFor','solveFor');
  renderAssets();renderFunds();renderProperties();
  tipify();
