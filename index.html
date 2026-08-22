@@ -601,8 +601,16 @@ function model(overrides={}){
   if(p.strategy==='rent'){
    const gross=n(p.rent.today)*Math.pow(1+n(p.rent.growth)/100,years)*(n(p.rent.occupancy)/100);
    const expMonthly=n(p.rent.expenses)*Math.pow(1+infl,years)/12;
-   rentBeforeTax=Math.max(0,gross-expMonthly);
-   rentTax=rentBeforeTax*(n(p.rent.taxRate)/100);
+   let mortgagePaymentMonthly=0;
+   if(p.mortgage&&p.mortgage.enabled){
+    const mi=mortgageInfo(p);
+    if(mi){
+     const monthsAtRetirement=Math.round((mi.yearsElapsed+years)*12);
+     if(monthsAtRetirement<mi.N)mortgagePaymentMonthly=mi.payment;
+    }
+   }
+   rentBeforeTax=Math.max(0,gross-expMonthly-mortgagePaymentMonthly);
+   rentTax=Math.max(0,gross-expMonthly)*(n(p.rent.taxRate)/100);
    rentNom=Math.max(0,rentBeforeTax-rentTax);
   }
   propertyEquityNomTotal+=equityNom;
@@ -685,6 +693,14 @@ function computeWarnings(m){
    const bal=mortgageBalanceAtRetirement(p,m.years);
    const propNom=n(p.value)*Math.pow(1+n(p.growth)/100,m.years);
    if(bal>propNom)w.push(`בנכס "${p.name}" יתרת המשכנתא הצפויה בפרישה גבוהה משווי הנכס הצפוי — הון שלילי בנכס.`);
+   if(p.strategy==='rent'){
+    const mi=mortgageInfo(p);
+    if(mi&&Math.round((mi.yearsElapsed+m.years)*12)<mi.N){
+     const gross=n(p.rent.today)*Math.pow(1+n(p.rent.growth)/100,m.years)*(n(p.rent.occupancy)/100);
+     const expMonthly=n(p.rent.expenses)*Math.pow(1+(n(state.basic.inflation)/100),m.years)/12;
+     if(mi.payment>=gross-expMonthly)w.push(`בנכס "${p.name}" תשלום המשכנתא החודשי הצפוי בפרישה (${money(mi.payment)}) מכסה את כל הכנסת השכירות ואף יותר — לא תתקבל הכנסה נטו מהנכס.`);
+    }
+   }
   }
  });
  return w;
